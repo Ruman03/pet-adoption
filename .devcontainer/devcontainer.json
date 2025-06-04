@@ -2,7 +2,7 @@
   "name": "PHP & MySQL Demo Environment",
   "dockerComposeFile": "docker-compose.yml",
   "service": "app", // This is the main service Codespaces will connect to (our PHP app)
-  "workspaceFolder": "/workspace",
+  "workspaceFolder": "/pet-adoption",
 
   "customizations": {
     "vscode": {
