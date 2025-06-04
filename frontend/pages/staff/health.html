@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Records - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pets.html">Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="applications.html">Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="health.html">Health Records</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fosters.html">Foster Program</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Profile">
+                            John Smith
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Health Records</h2>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary">
+                    <i class="fas fa-file-export me-2"></i>Export
+                </button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addRecordModal">
+                    <i class="fas fa-plus me-2"></i>Add Record
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Total Records</h6>
+                                <h3 class="mb-0">324</h3>
+                            </div>
+                            <i class="fas fa-notes-medical fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Healthy</h6>
+                                <h3 class="mb-0">245</h3>
+                            </div>
+                            <i class="fas fa-heart fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Needs Attention</h6>
+                                <h3 class="mb-0">56</h3>
+                            </div>
+                            <i class="fas fa-exclamation-triangle fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Critical</h6>
+                                <h3 class="mb-0">23</h3>
+                            </div>
+                            <i class="fas fa-ambulance fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter Bar -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search records...">
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">All Health Status</option>
+                            <option value="healthy">Healthy</option>
+                            <option value="attention">Needs Attention</option>
+                            <option value="critical">Critical</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">All Record Types</option>
+                            <option value="checkup">Regular Checkup</option>
+                            <option value="vaccination">Vaccination</option>
+                            <option value="treatment">Treatment</option>
+                            <option value="surgery">Surgery</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select">
+                            <option value="">Sort By</option>
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Health Records Table -->
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Record ID</th>
+                            <th>Pet</th>
+                            <th>Type</th>
+                            <th>Date</th>
+                            <th>Vet</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#HR001</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Pet">
+                                    <div>
+                                        <h6 class="mb-0">Luna</h6>
+                                        <small class="text-muted">Cat • #A123</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Vaccination</td>
+                            <td>2024-02-15</td>
+                            <td>Dr. Smith</td>
+                            <td><span class="badge bg-success">Completed</span></td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#viewRecordModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="fas fa-print"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#HR002</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Pet">
+                                    <div>
+                                        <h6 class="mb-0">Max</h6>
+                                        <small class="text-muted">Dog • #A124</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Treatment</td>
+                            <td>2024-02-14</td>
+                            <td>Dr. Johnson</td>
+                            <td><span class="badge bg-warning">Follow-up Required</span></td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#viewRecordModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-secondary">
+                                        <i class="fas fa-print"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer bg-white">
+                <nav class="d-flex justify-content-between align-items-center">
+                    <p class="small text-muted mb-0">Showing 1-2 of 324 records</p>
+                    <ul class="pagination mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Record Modal -->
+    <div class="modal fade" id="addRecordModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Health Record</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Pet</label>
+                                <select class="form-select" required>
+                                    <option value="">Select pet...</option>
+                                    <option value="1">Luna (Cat • #A123)</option>
+                                    <option value="2">Max (Dog • #A124)</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Record Type</label>
+                                <select class="form-select" required>
+                                    <option value="">Select type...</option>
+                                    <option value="checkup">Regular Checkup</option>
+                                    <option value="vaccination">Vaccination</option>
+                                    <option value="treatment">Treatment</option>
+                                    <option value="surgery">Surgery</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Date</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Veterinarian</label>
+                                <select class="form-select" required>
+                                    <option value="">Select vet...</option>
+                                    <option value="1">Dr. Smith</option>
+                                    <option value="2">Dr. Johnson</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Diagnosis/Condition</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Treatment/Procedure</label>
+                                <textarea class="form-control" rows="3" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Medications</label>
+                                <textarea class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Instructions</label>
+                                <textarea class="form-control" rows="2"></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Follow-up Date</label>
+                                <input type="date" class="form-control">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" required>
+                                    <option value="completed">Completed</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="followup">Follow-up Required</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Attachments</label>
+                                <input type="file" class="form-control" multiple>
+                                <div class="form-text">Upload relevant documents, test results, or images</div>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Notes</label>
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save Record</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Record Modal -->
+    <div class="modal fade" id="viewRecordModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Health Record Details #HR001</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <!-- Pet Information -->
+                        <div class="col-md-6">
+                            <h6 class="border-bottom pb-2">Pet Information</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th width="35%">Name</th>
+                                    <td>Luna</td>
+                                </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <td>#A123</td>
+                                </tr>
+                                <tr>
+                                    <th>Species</th>
+                                    <td>Cat</td>
+                                </tr>
+                                <tr>
+                                    <th>Age</th>
+                                    <td>2 months</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- Record Information -->
+                        <div class="col-md-6">
+                            <h6 class="border-bottom pb-2">Record Information</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th width="35%">Record ID</th>
+                                    <td>#HR001</td>
+                                </tr>
+                                <tr>
+                                    <th>Type</th>
+                                    <td>Vaccination</td>
+                                </tr>
+                                <tr>
+                                    <th>Date</th>
+                                    <td>2024-02-15</td>
+                                </tr>
+                                <tr>
+                                    <th>Veterinarian</th>
+                                    <td>Dr. Smith</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- Medical Details -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2">Medical Details</h6>
+                            <div class="mb-3">
+                                <p class="fw-bold mb-1">Diagnosis/Condition</p>
+                                <p>Routine vaccination</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold mb-1">Treatment/Procedure</p>
+                                <p>FVRCP vaccination (first dose)</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold mb-1">Medications</p>
+                                <p>None prescribed</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold mb-1">Instructions</p>
+                                <p>Monitor for any adverse reactions. Schedule follow-up for second dose in 3-4 weeks.</p>
+                            </div>
+                        </div>
+
+                        <!-- Attachments -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2">Attachments</h6>
+                            <div class="row g-2">
+                                <div class="col-auto">
+                                    <div class="card">
+                                        <div class="card-body p-2">
+                                            <div class="d-flex align-items-center">
+                                                <i class="fas fa-file-pdf fa-2x text-danger me-2"></i>
+                                                <div>
+                                                    <h6 class="mb-0">Vaccination Certificate</h6>
+                                                    <small class="text-muted">PDF • 245 KB</small>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2">Notes</h6>
+                            <p>Pet was calm during the procedure. No immediate adverse reactions observed.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-outline-secondary">
+                        <i class="fas fa-print me-2"></i>Print Record
+                    </button>
+                    <button type="button" class="btn btn-primary">Edit Record</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

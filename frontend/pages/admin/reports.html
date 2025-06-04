@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reports - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar text-white" style="width: 250px;">
+            <div class="sidebar-brand">
+                <i class="fas fa-paw"></i>
+                <span>Admin Panel</span>
+            </div>
+            <hr class="sidebar-divider">
+            <div class="nav flex-column">
+                <a href="dashboard.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="users.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <a href="shelters.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Shelters</span>
+                </a>
+                <a href="reports.html" class="nav-link active text-white">
+                    <i class="fas fa-fw fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="settings.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1">
+            <!-- Top Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <div class="container-fluid">
+                    <button class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="d-flex align-items-center ml-auto">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin User</span>
+                                <img class="img-profile rounded-circle" src="https://via.placeholder.com/40">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2"></i> Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content -->
+            <div class="container-fluid p-4">
+                <!-- Page Header -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Reports & Analytics</h1>
+                    <div class="btn-group">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exportReportModal">
+                            <i class="fas fa-download fa-sm"></i> Export Report
+                        </button>
+                        <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">
+                            Last 30 Days
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Last 7 Days</a></li>
+                            <li><a class="dropdown-item" href="#">Last 30 Days</a></li>
+                            <li><a class="dropdown-item" href="#">Last 3 Months</a></li>
+                            <li><a class="dropdown-item" href="#">Last Year</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Custom Range</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Overview Stats -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card stat-card primary h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-uppercase mb-1">Total Adoptions</h6>
+                                        <h3 class="mb-0">1,234</h3>
+                                        <small class="text-success">+12% from last month</small>
+                                    </div>
+                                    <div class="text-primary">
+                                        <i class="fas fa-heart fa-2x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card stat-card success h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-uppercase mb-1">Active Shelters</h6>
+                                        <h3 class="mb-0">45</h3>
+                                        <small class="text-success">+3 new this month</small>
+                                    </div>
+                                    <div class="text-success">
+                                        <i class="fas fa-home fa-2x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card stat-card info h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-uppercase mb-1">Total Users</h6>
+                                        <h3 class="mb-0">5,678</h3>
+                                        <small class="text-success">+8% from last month</small>
+                                    </div>
+                                    <div class="text-info">
+                                        <i class="fas fa-users fa-2x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card stat-card warning h-100">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <h6 class="text-uppercase mb-1">Success Rate</h6>
+                                        <h3 class="mb-0">85%</h3>
+                                        <small class="text-success">+5% from last month</small>
+                                    </div>
+                                    <div class="text-warning">
+                                        <i class="fas fa-chart-line fa-2x"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts Row -->
+                <div class="row g-4 mb-4">
+                    <!-- Adoption Trends -->
+                    <div class="col-lg-8">
+                        <div class="card shadow h-100">
+                            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                                <h6 class="m-0 font-weight-bold text-primary">Adoption Trends</h6>
+                                <div class="btn-group">
+                                    <button class="btn btn-sm btn-outline-secondary active">Monthly</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Weekly</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Daily</button>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="adoptionTrendsChart" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pet Distribution -->
+                    <div class="col-lg-4">
+                        <div class="card shadow h-100">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Pet Distribution</h6>
+                            </div>
+                            <div class="card-body">
+                                <canvas id="petDistributionChart" height="300"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detailed Stats -->
+                <div class="row g-4">
+                    <!-- Top Performing Shelters -->
+                    <div class="col-lg-6">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Top Performing Shelters</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>Shelter</th>
+                                                <th>Adoptions</th>
+                                                <th>Success Rate</th>
+                                                <th>Trend</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>Happy Paws Shelter</td>
+                                                <td>156</td>
+                                                <td>92%</td>
+                                                <td><span class="text-success"><i class="fas fa-arrow-up"></i> 8%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Furry Friends Haven</td>
+                                                <td>132</td>
+                                                <td>88%</td>
+                                                <td><span class="text-success"><i class="fas fa-arrow-up"></i> 5%</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Pawsome Care</td>
+                                                <td>98</td>
+                                                <td>85%</td>
+                                                <td><span class="text-danger"><i class="fas fa-arrow-down"></i> 2%</span></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activities -->
+                    <div class="col-lg-6">
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary">Recent Activities</h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="timeline">
+                                    <div class="timeline-item mb-3">
+                                        <p class="small text-gray-500 mb-1">December 12, 2023</p>
+                                        <p class="mb-0">New adoption completed at Happy Paws Shelter</p>
+                                    </div>
+                                    <div class="timeline-item mb-3">
+                                        <p class="small text-gray-500 mb-1">December 11, 2023</p>
+                                        <p class="mb-0">Furry Friends Haven reached 100 successful adoptions</p>
+                                    </div>
+                                    <div class="timeline-item mb-3">
+                                        <p class="small text-gray-500 mb-1">December 10, 2023</p>
+                                        <p class="mb-0">New shelter application received from Pawsome Care</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Export Report Modal -->
+    <div class="modal fade" id="exportReportModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Export Report</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Report Type</label>
+                            <select class="form-select" required>
+                                <option value="adoption">Adoption Report</option>
+                                <option value="shelter">Shelter Performance Report</option>
+                                <option value="user">User Activity Report</option>
+                                <option value="complete">Complete System Report</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Date Range</label>
+                            <select class="form-select" required>
+                                <option value="7">Last 7 Days</option>
+                                <option value="30" selected>Last 30 Days</option>
+                                <option value="90">Last 3 Months</option>
+                                <option value="365">Last Year</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Format</label>
+                            <select class="form-select" required>
+                                <option value="pdf">PDF</option>
+                                <option value="excel">Excel</option>
+                                <option value="csv">CSV</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Export</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Adoption Trends Chart
+        const adoptionTrendsCtx = document.getElementById('adoptionTrendsChart').getContext('2d');
+        new Chart(adoptionTrendsCtx, {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                datasets: [{
+                    label: 'Adoptions',
+                    data: [65, 78, 90, 85, 95, 110, 125, 130, 120, 140, 150, 160],
+                    borderColor: '#4e73df',
+                    tension: 0.3,
+                    fill: false
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+
+        // Pet Distribution Chart
+        const petDistributionCtx = document.getElementById('petDistributionChart').getContext('2d');
+        new Chart(petDistributionCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Dogs', 'Cats', 'Birds', 'Others'],
+                datasets: [{
+                    data: [45, 35, 12, 8],
+                    backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc', '#f6c23e']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false
+            }
+        });
+    </script>
+</body>
+</html> 

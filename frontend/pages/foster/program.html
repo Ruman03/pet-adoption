@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foster Program - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pets/available.html">Available Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../adoption/process.html">Adoption Process</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../volunteer/opportunities.html">Volunteer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="program.html">Foster</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="../auth/login.html" class="btn btn-outline-light me-2">Login</a>
+                    <a href="../auth/register.html" class="btn btn-light">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <h1 class="display-4 mb-3">Foster Program</h1>
+            <p class="lead text-muted">Open your heart and home to pets in need of temporary care.</p>
+            <a href="../auth/register.html" class="btn btn-primary btn-lg">
+                <i class="fas fa-house-user me-2"></i>Become a Foster Parent
+            </a>
+        </div>
+
+        <!-- Why Foster Section -->
+        <div class="row mb-5">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-body">
+                        <h3 class="card-title text-center mb-4">Why Foster?</h3>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-heart text-primary fa-2x me-3"></i>
+                                    <div>
+                                        <h5>Save Lives</h5>
+                                        <p>By fostering, you help us save more pets and provide them with loving care.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-home text-primary fa-2x me-3"></i>
+                                    <div>
+                                        <h5>Home Environment</h5>
+                                        <p>Pets thrive better in a home environment than in a shelter.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-hands-helping text-primary fa-2x me-3"></i>
+                                    <div>
+                                        <h5>Flexible Commitment</h5>
+                                        <p>Choose the duration and type of fostering that works for you.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex">
+                                    <i class="fas fa-graduation-cap text-primary fa-2x me-3"></i>
+                                    <div>
+                                        <h5>Learn & Grow</h5>
+                                        <p>Gain experience in animal care and make a real difference.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Foster Opportunities -->
+        <h2 class="text-center mb-4">Foster Opportunities</h2>
+        <div class="row g-4">
+            <!-- Nursing Mothers -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-baby-carriage fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-center">Nursing Mothers</h5>
+                        <p class="card-text">Care for mother cats or dogs with their newborn babies until they're ready for adoption.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-clock text-primary me-2"></i>2-8 weeks commitment</li>
+                            <li><i class="fas fa-house text-primary me-2"></i>Quiet space required</li>
+                            <li><i class="fas fa-heart text-primary me-2"></i>High impact opportunity</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Medical Recovery -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-medkit fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-center">Medical Recovery</h5>
+                        <p class="card-text">Help pets recover from surgery or illness in a calm, loving environment.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-clock text-primary me-2"></i>2-4 weeks commitment</li>
+                            <li><i class="fas fa-pills text-primary me-2"></i>Medication administration</li>
+                            <li><i class="fas fa-user-md text-primary me-2"></i>Vet visit transportation</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Socialization -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="text-center mb-3">
+                            <i class="fas fa-users fa-3x text-primary"></i>
+                        </div>
+                        <h5 class="card-title text-center">Socialization</h5>
+                        <p class="card-text">Help shy or fearful pets build confidence and trust with humans.</p>
+                        <ul class="list-unstyled">
+                            <li><i class="fas fa-clock text-primary me-2"></i>4+ weeks commitment</li>
+                            <li><i class="fas fa-hand-holding-heart text-primary me-2"></i>Patience required</li>
+                            <li><i class="fas fa-star text-primary me-2"></i>Training provided</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Requirements Section -->
+        <div class="mt-5">
+            <h2 class="text-center mb-4">Foster Requirements</h2>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <h5 class="mb-3">Basic Requirements</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Must be 21 years or older
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Have reliable transportation
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Attend foster orientation
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-check-circle text-success me-2"></i>
+                                            Pass home inspection
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5 class="mb-3">We Provide</h5>
+                                    <ul class="list-unstyled">
+                                        <li class="mb-2">
+                                            <i class="fas fa-paw text-primary me-2"></i>
+                                            Food and supplies
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-heartbeat text-primary me-2"></i>
+                                            Medical care
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-phone text-primary me-2"></i>
+                                            24/7 support
+                                        </li>
+                                        <li class="mb-2">
+                                            <i class="fas fa-graduation-cap text-primary me-2"></i>
+                                            Training resources
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-paw me-2"></i>Pet Adoption</h5>
+                    <p class="mb-0">Making pet adoption easy, accessible, and safe for everyone.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../pets/available.html" class="text-white text-decoration-none">Available Pets</a></li>
+                        <li><a href="../adoption/process.html" class="text-white text-decoration-none">Adoption Process</a></li>
+                        <li><a href="../volunteer/opportunities.html" class="text-white text-decoration-none">Volunteer</a></li>
+                        <li><a href="program.html" class="text-white text-decoration-none">Foster Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i>(555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@petadoption.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>123 Pet Street, City, State</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Pet Adoption System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

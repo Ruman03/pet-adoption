@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Dashboard - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <style>
+        .profile-img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tasks.html">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="training.html">Training</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                 class="rounded-circle me-2 profile-img" 
+                                 alt="Sarah Johnson">
+                            Sarah Johnson
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../auth/login.html"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Welcome Section -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h4 class="mb-1">Welcome back, Sarah!</h4>
+                                <p class="mb-0">You have 3 upcoming volunteer shifts this week</p>
+                            </div>
+                            <div class="text-end">
+                                <p class="mb-1">Total Hours</p>
+                                <h5 class="mb-0">48 hours</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Upcoming Shifts</h6>
+                                <h3 class="mb-0">3</h3>
+                            </div>
+                            <i class="fas fa-calendar-check fa-2x text-primary opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Tasks Completed</h6>
+                                <h3 class="mb-0">24</h3>
+                            </div>
+                            <i class="fas fa-tasks fa-2x text-success opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Pets Helped</h6>
+                                <h3 class="mb-0">15</h3>
+                            </div>
+                            <i class="fas fa-paw fa-2x text-info opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Training Modules</h6>
+                                <h3 class="mb-0">5/6</h3>
+                            </div>
+                            <i class="fas fa-graduation-cap fa-2x text-warning opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Upcoming Shifts -->
+        <div class="row mb-4">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">Upcoming Shifts</h5>
+                        <button class="btn btn-sm btn-outline-primary">
+                            <i class="fas fa-calendar me-2"></i>View Full Schedule
+                        </button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Role</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Feb 22, 2024</td>
+                                    <td>09:00 - 12:00</td>
+                                    <td>Animal Care</td>
+                                    <td>Main Shelter</td>
+                                    <td><span class="badge bg-success">Confirmed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Feb 24, 2024</td>
+                                    <td>14:00 - 17:00</td>
+                                    <td>Event Support</td>
+                                    <td>City Park</td>
+                                    <td><span class="badge bg-warning">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Feb 25, 2024</td>
+                                    <td>10:00 - 13:00</td>
+                                    <td>Animal Care</td>
+                                    <td>Main Shelter</td>
+                                    <td><span class="badge bg-success">Confirmed</span></td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <!-- Training Progress -->
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Training Progress</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-4">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Overall Progress</span>
+                                <span>83%</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 83%"></div>
+                            </div>
+                        </div>
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Basic Animal Care</h6>
+                                    <span class="badge bg-success">Completed</span>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Safety Protocols</h6>
+                                    <span class="badge bg-success">Completed</span>
+                                </div>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action">
+                                <div class="d-flex w-100 justify-content-between">
+                                    <h6 class="mb-1">Animal Behavior</h6>
+                                    <span class="badge bg-warning">In Progress</span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Activity -->
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Recent Activity</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-1">Completed shift</h6>
+                                    <small class="text-muted">Animal Care - 3 hours</small>
+                                </div>
+                                <small class="text-muted">2 days ago</small>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-1">Completed training module</h6>
+                                    <small class="text-muted">Safety Protocols</small>
+                                </div>
+                                <small class="text-muted">3 days ago</small>
+                            </div>
+                        </div>
+                        <div class="list-group-item">
+                            <div class="d-flex w-100 justify-content-between">
+                                <div>
+                                    <h6 class="mb-1">Signed up for event</h6>
+                                    <small class="text-muted">Adoption Day - Feb 24</small>
+                                </div>
+                                <small class="text-muted">4 days ago</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-paw me-2"></i>Pet Adoption</h5>
+                    <p class="mb-0">Making pet adoption easy, accessible, and safe for everyone.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html" class="text-white text-decoration-none">Dashboard</a></li>
+                        <li><a href="schedule.html" class="text-white text-decoration-none">Schedule</a></li>
+                        <li><a href="tasks.html" class="text-white text-decoration-none">Tasks</a></li>
+                        <li><a href="training.html" class="text-white text-decoration-none">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i>(555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@petadoption.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>123 Pet Street, City, State</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Pet Adoption System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

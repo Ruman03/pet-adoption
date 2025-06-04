@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Pets - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#"><i class="fas fa-paw"></i> Pet Adoption</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="browse.html">Browse Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="applications.html">My Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">Favorites</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Profile">
+                            John Doe
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2"></i> Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <div class="row">
+            <!-- Filters Sidebar -->
+            <div class="col-lg-3 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title mb-4">Filters</h5>
+                        <form>
+                            <!-- Animal Type -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Animal Type</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <input type="radio" class="btn-check" name="type" id="type-all" checked>
+                                    <label class="btn btn-outline-primary btn-sm" for="type-all">All</label>
+                                    
+                                    <input type="radio" class="btn-check" name="type" id="type-dog">
+                                    <label class="btn btn-outline-primary btn-sm" for="type-dog">Dogs</label>
+                                    
+                                    <input type="radio" class="btn-check" name="type" id="type-cat">
+                                    <label class="btn btn-outline-primary btn-sm" for="type-cat">Cats</label>
+                                    
+                                    <input type="radio" class="btn-check" name="type" id="type-other">
+                                    <label class="btn btn-outline-primary btn-sm" for="type-other">Other</label>
+                                </div>
+                            </div>
+
+                            <!-- Age Range -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Age Range</label>
+                                <div id="age-slider"></div>
+                                <div class="d-flex justify-content-between mt-2">
+                                    <span id="age-min">0 years</span>
+                                    <span id="age-max">15 years</span>
+                                </div>
+                            </div>
+
+                            <!-- Size -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Size</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <input type="checkbox" class="btn-check" id="size-small">
+                                    <label class="btn btn-outline-primary btn-sm" for="size-small">Small</label>
+                                    
+                                    <input type="checkbox" class="btn-check" id="size-medium">
+                                    <label class="btn btn-outline-primary btn-sm" for="size-medium">Medium</label>
+                                    
+                                    <input type="checkbox" class="btn-check" id="size-large">
+                                    <label class="btn btn-outline-primary btn-sm" for="size-large">Large</label>
+                                </div>
+                            </div>
+
+                            <!-- Gender -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Gender</label>
+                                <select class="form-select">
+                                    <option value="">Any</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+
+                            <!-- Location -->
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Location</label>
+                                <input type="text" class="form-control" placeholder="Enter ZIP code">
+                            </div>
+
+                            <button type="submit" class="btn btn-primary w-100">Apply Filters</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Grid -->
+            <div class="col-lg-9">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h4 class="mb-0">Available Pets</h4>
+                    <div class="d-flex gap-2 align-items-center">
+                        <label class="form-label mb-0">Sort by:</label>
+                        <select class="form-select form-select-sm" style="width: auto;">
+                            <option>Recently Added</option>
+                            <option>Age: Youngest</option>
+                            <option>Age: Oldest</option>
+                            <option>Name: A-Z</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row g-4">
+                    <!-- Pet Card 1 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 pet-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Pet">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="card-title mb-1">Buddy</h5>
+                                    <button class="btn btn-link text-danger p-0"><i class="far fa-heart"></i></button>
+                                </div>
+                                <p class="text-muted mb-2">Golden Retriever • 2 years</p>
+                                <p class="card-text">Friendly and energetic dog looking for an active family.</p>
+                            </div>
+                            <div class="card-footer bg-white border-top-0">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary">Adopt Me</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pet Card 2 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 pet-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Pet">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="card-title mb-1">Luna</h5>
+                                    <button class="btn btn-link text-danger p-0"><i class="fas fa-heart"></i></button>
+                                </div>
+                                <p class="text-muted mb-2">Siamese Cat • 1 year</p>
+                                <p class="card-text">Sweet and gentle cat who loves to cuddle.</p>
+                            </div>
+                            <div class="card-footer bg-white border-top-0">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary">Adopt Me</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pet Card 3 -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 pet-card">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Pet">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <h5 class="card-title mb-1">Rocky</h5>
+                                    <button class="btn btn-link text-danger p-0"><i class="far fa-heart"></i></button>
+                                </div>
+                                <p class="text-muted mb-2">German Shepherd • 3 years</p>
+                                <p class="card-text">Trained and protective dog, great with families.</p>
+                            </div>
+                            <div class="card-footer bg-white border-top-0">
+                                <div class="d-grid">
+                                    <button class="btn btn-primary">Adopt Me</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@14.6.3/distribute/nouislider.min.js"></script>
+    <script>
+        // Initialize age range slider
+        const ageSlider = document.getElementById('age-slider');
+        noUiSlider.create(ageSlider, {
+            start: [0, 15],
+            connect: true,
+            range: {
+                'min': 0,
+                'max': 15
+            },
+            step: 1
+        });
+
+        // Update age range labels
+        const ageMin = document.getElementById('age-min');
+        const ageMax = document.getElementById('age-max');
+        ageSlider.noUiSlider.on('update', function (values, handle) {
+            if (handle === 0) {
+                ageMin.innerHTML = Math.round(values[0]) + ' years';
+            } else {
+                ageMax.innerHTML = Math.round(values[1]) + ' years';
+            }
+        });
+    </script>
+</body>
+</html> 

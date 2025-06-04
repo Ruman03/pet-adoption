@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Training - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <style>
+        .course-card {
+            transition: transform 0.2s;
+        }
+        .course-card:hover {
+            transform: translateY(-5px);
+        }
+        .progress {
+            height: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tasks.html">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="training.html">Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="applications.html">Applications</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                 class="rounded-circle me-2" 
+                                 alt="Sarah Johnson"
+                                 style="width: 32px; height: 32px; object-fit: cover;">
+                            Sarah Johnson
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../auth/login.html"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="mb-1">Training Modules</h2>
+                <p class="text-muted mb-0">Complete required training to unlock volunteer opportunities</p>
+            </div>
+            <div class="text-end">
+                <div class="d-flex align-items-center">
+                    <div class="me-3">
+                        <h6 class="mb-1">Overall Progress</h6>
+                        <div class="progress" style="width: 200px;">
+                            <div class="progress-bar" role="progressbar" style="width: 83%"></div>
+                        </div>
+                    </div>
+                    <h3 class="mb-0 text-primary">83%</h3>
+                </div>
+            </div>
+        </div>
+
+        <!-- Required Courses -->
+        <h5 class="mb-3">Required Courses</h5>
+        <div class="row g-4 mb-5">
+            <!-- Basic Animal Care -->
+            <div class="col-md-4">
+                <div class="card course-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-paw text-primary fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Basic Animal Care</h5>
+                                    <span class="badge bg-success">Completed</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted d-block">Progress</small>
+                                <strong class="text-success">100%</strong>
+                            </div>
+                        </div>
+                        <p class="card-text">Learn fundamental animal care practices, feeding schedules, and basic health monitoring.</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                        </div>
+                        <button class="btn btn-outline-primary w-100">Review Course</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Safety Protocols -->
+            <div class="col-md-4">
+                <div class="card course-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-shield-alt text-primary fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Safety Protocols</h5>
+                                    <span class="badge bg-success">Completed</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted d-block">Progress</small>
+                                <strong class="text-success">100%</strong>
+                            </div>
+                        </div>
+                        <p class="card-text">Essential safety guidelines, emergency procedures, and handling protocols.</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 100%"></div>
+                        </div>
+                        <button class="btn btn-outline-primary w-100">Review Course</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Animal Behavior -->
+            <div class="col-md-4">
+                <div class="card course-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-heart text-primary fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Animal Behavior</h5>
+                                    <span class="badge bg-warning">In Progress</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted d-block">Progress</small>
+                                <strong class="text-warning">50%</strong>
+                            </div>
+                        </div>
+                        <p class="card-text">Understanding animal body language, stress signals, and proper interaction techniques.</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-warning" role="progressbar" style="width: 50%"></div>
+                        </div>
+                        <button class="btn btn-primary w-100">Continue Course</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Optional Courses -->
+        <h5 class="mb-3">Optional Courses</h5>
+        <div class="row g-4">
+            <!-- Pet Photography -->
+            <div class="col-md-4">
+                <div class="card course-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-camera text-primary fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Pet Photography</h5>
+                                    <span class="badge bg-secondary">Not Started</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted d-block">Progress</small>
+                                <strong class="text-secondary">0%</strong>
+                            </div>
+                        </div>
+                        <p class="card-text">Learn to take engaging photos of pets for adoption listings and social media.</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <button class="btn btn-primary w-100">Start Course</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Event Management -->
+            <div class="col-md-4">
+                <div class="card course-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-calendar-alt text-primary fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Event Management</h5>
+                                    <span class="badge bg-info">Coming Soon</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted d-block">Release Date</small>
+                                <strong class="text-info">Mar 1</strong>
+                            </div>
+                        </div>
+                        <p class="card-text">Organize and manage adoption events, fundraisers, and community outreach programs.</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <button class="btn btn-outline-secondary w-100" disabled>Coming Soon</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Animal Care -->
+            <div class="col-md-4">
+                <div class="card course-card h-100">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between mb-3">
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-stethoscope text-primary fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="card-title mb-1">Advanced Animal Care</h5>
+                                    <span class="badge bg-secondary">Locked</span>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <small class="text-muted d-block">Requirement</small>
+                                <strong class="text-secondary">Basic Care</strong>
+                            </div>
+                        </div>
+                        <p class="card-text">Advanced health monitoring, medication administration, and special needs care.</p>
+                        <div class="progress mb-3">
+                            <div class="progress-bar bg-secondary" role="progressbar" style="width: 0%"></div>
+                        </div>
+                        <button class="btn btn-outline-secondary w-100" disabled>Complete Basic Care First</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-paw me-2"></i>Pet Adoption</h5>
+                    <p class="mb-0">Making pet adoption easy, accessible, and safe for everyone.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html" class="text-white text-decoration-none">Dashboard</a></li>
+                        <li><a href="schedule.html" class="text-white text-decoration-none">Schedule</a></li>
+                        <li><a href="tasks.html" class="text-white text-decoration-none">Tasks</a></li>
+                        <li><a href="training.html" class="text-white text-decoration-none">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i>(555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@petadoption.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>123 Pet Street, City, State</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Pet Adoption System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

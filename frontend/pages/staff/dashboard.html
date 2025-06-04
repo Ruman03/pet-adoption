@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelter Staff Portal - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar text-white" style="width: 250px;">
+            <div class="sidebar-brand">
+                <i class="fas fa-paw"></i>
+                <span>Staff Portal</span>
+            </div>
+            <hr class="sidebar-divider">
+            <div class="nav flex-column">
+                <a href="dashboard.html" class="nav-link active text-white">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="pets.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-paw"></i>
+                    <span>Pets</span>
+                </a>
+                <a href="applications.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Applications</span>
+                </a>
+                <a href="health.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-heartbeat"></i>
+                    <span>Health Records</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1">
+            <!-- Top Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <div class="container-fluid">
+                    <button class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="d-flex align-items-center ml-auto">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Happy Paws Staff</span>
+                                <img class="img-profile rounded-circle" src="https://via.placeholder.com/40">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2"></i> Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Dashboard Content -->
+            <div class="container-fluid p-4">
+                <!-- Page Header -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Pet Management</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPetModal">
+                        <i class="fas fa-plus fa-sm"></i> Add New Pet
+                    </button>
+                </div>
+
+                <!-- Filters -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Status</label>
+                                <select class="form-select">
+                                    <option value="">All</option>
+                                    <option value="available">Available</option>
+                                    <option value="adopted">Adopted</option>
+                                    <option value="pending">Pending</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Breed</label>
+                                <select class="form-select">
+                                    <option value="">All Breeds</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="bird">Bird</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Age</label>
+                                <select class="form-select">
+                                    <option value="">All Ages</option>
+                                    <option value="puppy">Puppy/Kitten</option>
+                                    <option value="young">Young</option>
+                                    <option value="adult">Adult</option>
+                                    <option value="senior">Senior</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Size</label>
+                                <select class="form-select">
+                                    <option value="">All Sizes</option>
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pet List -->
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">Current Pets</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Photo</th>
+                                        <th>Name</th>
+                                        <th>Breed</th>
+                                        <th>Age</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><img src="https://via.placeholder.com/50" class="rounded" alt="Pet"></td>
+                                        <td>Max</td>
+                                        <td>German Shepherd</td>
+                                        <td>2 years</td>
+                                        <td><span class="badge bg-success">Available</span></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editPetModal">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><img src="https://via.placeholder.com/50" class="rounded" alt="Pet"></td>
+                                        <td>Luna</td>
+                                        <td>Siamese Cat</td>
+                                        <td>1 year</td>
+                                        <td><span class="badge bg-warning">Pending</span></td>
+                                        <td>
+                                            <button class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#editPetModal">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="btn btn-danger btn-sm">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Pet Modal -->
+    <div class="modal fade" id="addPetModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Pet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Pet Name</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Breed</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Age</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Size</label>
+                            <select class="form-select" required>
+                                <option value="small">Small</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Photo</label>
+                            <input type="file" class="form-control" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add Pet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

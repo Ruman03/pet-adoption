@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foster Pets - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pets.html">My Foster Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="reports.html">Health Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="supplies.html">Supplies</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Profile">
+                            Sarah Wilson
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">My Foster Pets</h2>
+            <div class="d-flex gap-2">
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" data-bs-toggle="dropdown">
+                        Filter by Status
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">All Pets</a></li>
+                        <li><a class="dropdown-item" href="#">Currently Fostering</a></li>
+                        <li><a class="dropdown-item" href="#">Adopted</a></li>
+                        <li><a class="dropdown-item" href="#">Medical Care</a></li>
+                    </ul>
+                </div>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUpdateModal">
+                    <i class="fas fa-plus me-2"></i>Add Update
+                </button>
+            </div>
+        </div>
+
+        <!-- Foster Pets Grid -->
+        <div class="row g-4">
+            <!-- Pet Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Pet">
+                        <span class="badge bg-success position-absolute top-0 start-0 m-2">Currently Fostering</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Luna</h5>
+                            <span class="text-primary">2 months</span>
+                        </div>
+                        <p class="card-text text-muted mb-2">Domestic Shorthair • Female</p>
+                        <div class="progress mb-3" style="height: 5px;">
+                            <div class="progress-bar bg-success" style="width: 75%"></div>
+                        </div>
+                        <p class="small text-muted mb-3">Fostering Progress: Week 3 of 4</p>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary flex-grow-1" data-bs-toggle="modal" data-bs-target="#petDetailsModal">
+                                <i class="fas fa-info-circle me-2"></i>Details
+                            </button>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUpdateModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Pet">
+                        <span class="badge bg-warning position-absolute top-0 start-0 m-2">Medical Care</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Max</h5>
+                            <span class="text-primary">4 months</span>
+                        </div>
+                        <p class="card-text text-muted mb-2">Golden Retriever • Male</p>
+                        <div class="progress mb-3" style="height: 5px;">
+                            <div class="progress-bar bg-warning" style="width: 45%"></div>
+                        </div>
+                        <p class="small text-muted mb-3">Recovery Progress: Week 2 of 4</p>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary flex-grow-1" data-bs-toggle="modal" data-bs-target="#petDetailsModal">
+                                <i class="fas fa-info-circle me-2"></i>Details
+                            </button>
+                            <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addUpdateModal">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Card -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="position-relative">
+                        <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Pet">
+                        <span class="badge bg-info position-absolute top-0 start-0 m-2">Adopted</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="card-title mb-0">Charlie</h5>
+                            <span class="text-primary">6 months</span>
+                        </div>
+                        <p class="card-text text-muted mb-2">Mixed Breed • Male</p>
+                        <div class="progress mb-3" style="height: 5px;">
+                            <div class="progress-bar bg-info" style="width: 100%"></div>
+                        </div>
+                        <p class="small text-muted mb-3">Successfully adopted on Dec 1, 2023</p>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-primary flex-grow-1" data-bs-toggle="modal" data-bs-target="#petDetailsModal">
+                                <i class="fas fa-info-circle me-2"></i>Details
+                            </button>
+                            <button class="btn btn-outline-primary" disabled>
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Pet Details Modal -->
+    <div class="modal fade" id="petDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pet Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/300" class="img-fluid rounded mb-3" alt="Pet">
+                            <h5>Luna</h5>
+                            <p class="text-muted">Domestic Shorthair • Female • 2 months</p>
+                            <div class="progress mb-2" style="height: 5px;">
+                                <div class="progress-bar bg-success" style="width: 75%"></div>
+                            </div>
+                            <p class="small text-muted">Fostering Progress: Week 3 of 4</p>
+                        </div>
+                        <div class="col-md-8">
+                            <nav>
+                                <div class="nav nav-tabs" role="tablist">
+                                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#updates">Updates</button>
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#medical">Medical</button>
+                                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#schedule">Schedule</button>
+                                </div>
+                            </nav>
+                            <div class="tab-content pt-3">
+                                <div class="tab-pane fade show active" id="updates">
+                                    <div class="timeline">
+                                        <div class="timeline-item mb-3">
+                                            <p class="small text-muted mb-1">December 12, 2023</p>
+                                            <p class="mb-0">Weight check: 2.5 lbs (+0.3 lbs from last week)</p>
+                                        </div>
+                                        <div class="timeline-item mb-3">
+                                            <p class="small text-muted mb-1">December 10, 2023</p>
+                                            <p class="mb-0">Started new feeding schedule, adjusting well</p>
+                                        </div>
+                                        <div class="timeline-item mb-3">
+                                            <p class="small text-muted mb-1">December 8, 2023</p>
+                                            <p class="mb-0">Completed second round of vaccinations</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane fade" id="medical">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Vaccinations</th>
+                                            <td>FVRCP (2/3), Rabies (Scheduled)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Medications</th>
+                                            <td>Dewormer (Completed)</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Next Checkup</th>
+                                            <td>December 15, 2023</td>
+                                        </tr>
+                                        <tr>
+                                            <th>Special Needs</th>
+                                            <td>None</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="schedule">
+                                    <div class="mb-3">
+                                        <h6>Daily Schedule</h6>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-clock me-2"></i>7:00 AM - Morning feeding</li>
+                                            <li><i class="fas fa-clock me-2"></i>2:00 PM - Afternoon feeding</li>
+                                            <li><i class="fas fa-clock me-2"></i>8:00 PM - Evening feeding</li>
+                                        </ul>
+                                    </div>
+                                    <div class="mb-3">
+                                        <h6>Upcoming Appointments</h6>
+                                        <ul class="list-unstyled">
+                                            <li><i class="fas fa-calendar me-2"></i>Dec 15 - Vet checkup</li>
+                                            <li><i class="fas fa-calendar me-2"></i>Dec 20 - Final vaccination</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Contact Shelter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Update Modal -->
+    <div class="modal fade" id="addUpdateModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add Update</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Select Pet</label>
+                            <select class="form-select" required>
+                                <option value="luna">Luna</option>
+                                <option value="max">Max</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Update Type</label>
+                            <select class="form-select" required>
+                                <option value="general">General Update</option>
+                                <option value="medical">Medical Update</option>
+                                <option value="behavior">Behavior Update</option>
+                                <option value="milestone">Milestone</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Add Photos</label>
+                            <input type="file" class="form-control" accept="image/*" multiple>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="notifyShelter">
+                                <label class="form-check-label" for="notifyShelter">
+                                    Notify shelter about this update
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Save Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

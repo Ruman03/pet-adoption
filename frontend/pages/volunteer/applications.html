@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Applications - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dashboard.html">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="schedule.html">Schedule</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tasks.html">Tasks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="training.html">Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="applications.html">Applications</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                 class="rounded-circle me-2" 
+                                 alt="Sarah Johnson"
+                                 style="width: 32px; height: 32px; object-fit: cover;">
+                            Sarah Johnson
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../auth/login.html"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Volunteer Applications</h2>
+            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newApplicationModal">
+                <i class="fas fa-plus me-2"></i>New Application
+            </button>
+        </div>
+
+        <!-- Application Status -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Total Applications</h6>
+                                <h3 class="mb-0">3</h3>
+                            </div>
+                            <i class="fas fa-file-alt fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Approved</h6>
+                                <h3 class="mb-0">1</h3>
+                            </div>
+                            <i class="fas fa-check-circle fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Pending</h6>
+                                <h3 class="mb-0">1</h3>
+                            </div>
+                            <i class="fas fa-clock fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">In Review</h6>
+                                <h3 class="mb-0">1</h3>
+                            </div>
+                            <i class="fas fa-search fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications List -->
+        <div class="card">
+            <div class="card-header bg-white">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">My Applications</h5>
+                    <div>
+                        <button class="btn btn-outline-secondary btn-sm me-2">
+                            <i class="fas fa-filter me-2"></i>Filter
+                        </button>
+                        <button class="btn btn-outline-secondary btn-sm">
+                            <i class="fas fa-sort me-2"></i>Sort
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Submitted Date</th>
+                            <th>Status</th>
+                            <th>Next Steps</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-paw text-primary me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Animal Care Volunteer</h6>
+                                        <small class="text-muted">Main Shelter</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Feb 15, 2024</td>
+                            <td><span class="badge bg-success">Approved</span></td>
+                            <td>Complete orientation</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-2">View Details</button>
+                                <button class="btn btn-sm btn-outline-success">Start Training</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-calendar-alt text-primary me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Event Coordinator</h6>
+                                        <small class="text-muted">Adoption Events</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Feb 18, 2024</td>
+                            <td><span class="badge bg-warning">Pending</span></td>
+                            <td>Awaiting interview</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary">View Details</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-camera text-primary me-3"></i>
+                                    <div>
+                                        <h6 class="mb-0">Pet Photographer</h6>
+                                        <small class="text-muted">Marketing Team</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>Feb 20, 2024</td>
+                            <td><span class="badge bg-info">In Review</span></td>
+                            <td>Portfolio review</td>
+                            <td>
+                                <button class="btn btn-sm btn-outline-primary me-2">View Details</button>
+                                <button class="btn btn-sm btn-outline-info">Upload Portfolio</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Application Modal -->
+    <div class="modal fade" id="newApplicationModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New Volunteer Application</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Position</label>
+                                <select class="form-select">
+                                    <option>Select a position</option>
+                                    <option>Animal Care Volunteer</option>
+                                    <option>Event Coordinator</option>
+                                    <option>Pet Photographer</option>
+                                    <option>Dog Walker</option>
+                                    <option>Cat Socializer</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Preferred Location</label>
+                                <select class="form-select">
+                                    <option>Select a location</option>
+                                    <option>Main Shelter</option>
+                                    <option>Downtown Center</option>
+                                    <option>West Side Location</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Availability</label>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="weekdays">
+                                        <label class="form-check-label" for="weekdays">Weekdays</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="weekends">
+                                        <label class="form-check-label" for="weekends">Weekends</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="evenings">
+                                        <label class="form-check-label" for="evenings">Evenings</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Experience</label>
+                            <textarea class="form-control" rows="3" placeholder="Describe your relevant experience"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Why do you want to volunteer?</label>
+                            <textarea class="form-control" rows="3" placeholder="Tell us why you'd like to join our volunteer team"></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">References</label>
+                            <input type="text" class="form-control mb-2" placeholder="Reference 1 (Name and Contact)">
+                            <input type="text" class="form-control" placeholder="Reference 2 (Name and Contact)">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Submit Application</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-paw me-2"></i>Pet Adoption</h5>
+                    <p class="mb-0">Making pet adoption easy, accessible, and safe for everyone.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="dashboard.html" class="text-white text-decoration-none">Dashboard</a></li>
+                        <li><a href="schedule.html" class="text-white text-decoration-none">Schedule</a></li>
+                        <li><a href="tasks.html" class="text-white text-decoration-none">Tasks</a></li>
+                        <li><a href="training.html" class="text-white text-decoration-none">Training</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i>(555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@petadoption.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>123 Pet Street, City, State</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Pet Adoption System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

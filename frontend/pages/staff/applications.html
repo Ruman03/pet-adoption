@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Applications - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="pets.html">Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="applications.html">Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="health.html">Health Records</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fosters.html">Foster Program</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Profile">
+                            John Smith
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Adoption Applications</h2>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary">
+                    <i class="fas fa-file-export me-2"></i>Export
+                </button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#filterModal">
+                    <i class="fas fa-filter me-2"></i>Filter
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Total Applications</h6>
+                                <h3 class="mb-0">245</h3>
+                            </div>
+                            <i class="fas fa-file-alt fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Pending Review</h6>
+                                <h3 class="mb-0">42</h3>
+                            </div>
+                            <i class="fas fa-clock fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Approved</h6>
+                                <h3 class="mb-0">156</h3>
+                            </div>
+                            <i class="fas fa-check-circle fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-danger text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Rejected</h6>
+                                <h3 class="mb-0">47</h3>
+                            </div>
+                            <i class="fas fa-times-circle fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search and Filter Bar -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search applications...">
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">All Statuses</option>
+                            <option value="pending">Pending Review</option>
+                            <option value="approved">Approved</option>
+                            <option value="rejected">Rejected</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">All Pet Types</option>
+                            <option value="dog">Dogs</option>
+                            <option value="cat">Cats</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select">
+                            <option value="">Sort By</option>
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Applications Table -->
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Application ID</th>
+                            <th>Applicant</th>
+                            <th>Pet</th>
+                            <th>Submitted Date</th>
+                            <th>Status</th>
+                            <th>Last Updated</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#APP001</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Sarah Johnson</h6>
+                                        <small class="text-muted">sarah@example.com</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Pet">
+                                    <div>
+                                        <h6 class="mb-0">Luna</h6>
+                                        <small class="text-muted">Cat • #A123</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>2024-02-15</td>
+                            <td><span class="badge bg-warning">Pending Review</span></td>
+                            <td>2024-02-15</td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#viewApplicationModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-success">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#APP002</td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="User">
+                                    <div>
+                                        <h6 class="mb-0">Michael Brown</h6>
+                                        <small class="text-muted">michael@example.com</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Pet">
+                                    <div>
+                                        <h6 class="mb-0">Max</h6>
+                                        <small class="text-muted">Dog • #A124</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>2024-02-14</td>
+                            <td><span class="badge bg-success">Approved</span></td>
+                            <td>2024-02-16</td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#viewApplicationModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer bg-white">
+                <nav class="d-flex justify-content-between align-items-center">
+                    <p class="small text-muted mb-0">Showing 1-2 of 245 applications</p>
+                    <ul class="pagination mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Application Modal -->
+    <div class="modal fade" id="viewApplicationModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Application Details #APP001</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-4">
+                        <!-- Applicant Information -->
+                        <div class="col-md-6">
+                            <h6 class="border-bottom pb-2">Applicant Information</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th width="35%">Name</th>
+                                    <td>Sarah Johnson</td>
+                                </tr>
+                                <tr>
+                                    <th>Email</th>
+                                    <td>sarah@example.com</td>
+                                </tr>
+                                <tr>
+                                    <th>Phone</th>
+                                    <td>(555) 123-4567</td>
+                                </tr>
+                                <tr>
+                                    <th>Address</th>
+                                    <td>123 Main St, Anytown, ST 12345</td>
+                                </tr>
+                                <tr>
+                                    <th>Occupation</th>
+                                    <td>Software Engineer</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- Pet Information -->
+                        <div class="col-md-6">
+                            <h6 class="border-bottom pb-2">Pet Information</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th width="35%">Name</th>
+                                    <td>Luna</td>
+                                </tr>
+                                <tr>
+                                    <th>ID</th>
+                                    <td>#A123</td>
+                                </tr>
+                                <tr>
+                                    <th>Species</th>
+                                    <td>Cat</td>
+                                </tr>
+                                <tr>
+                                    <th>Breed</th>
+                                    <td>Domestic Shorthair</td>
+                                </tr>
+                                <tr>
+                                    <th>Age</th>
+                                    <td>2 months</td>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <!-- Application Questions -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2">Application Questions</h6>
+                            <div class="mb-3">
+                                <p class="fw-bold mb-1">Why do you want to adopt this pet?</p>
+                                <p>I've been looking for a companion and feel that Luna would be perfect for my lifestyle. I work from home and can provide lots of attention and care.</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold mb-1">Do you have experience with pets?</p>
+                                <p>Yes, I grew up with cats and have previously owned two cats that lived to be 15+ years old.</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold mb-1">Do you have other pets?</p>
+                                <p>No, I currently don't have any other pets.</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="fw-bold mb-1">Do you have a veterinarian?</p>
+                                <p>Yes, I plan to use Dr. Smith at Anytown Veterinary Clinic.</p>
+                            </div>
+                        </div>
+
+                        <!-- References -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2">References</h6>
+                            <div class="table-responsive">
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Relationship</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>John Wilson</td>
+                                            <td>Former Landlord</td>
+                                            <td>(555) 234-5678</td>
+                                            <td>john@example.com</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mary Davis</td>
+                                            <td>Previous Vet</td>
+                                            <td>(555) 345-6789</td>
+                                            <td>mary@example.com</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Application Timeline -->
+                        <div class="col-12">
+                            <h6 class="border-bottom pb-2">Application Timeline</h6>
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-primary"></div>
+                                    <div class="timeline-content">
+                                        <div class="d-flex justify-content-between">
+                                            <p class="mb-0"><strong>Application Submitted</strong></p>
+                                            <small class="text-muted">2024-02-15 09:30 AM</small>
+                                        </div>
+                                        <p class="text-muted mb-0">Initial application received</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-info"></div>
+                                    <div class="timeline-content">
+                                        <div class="d-flex justify-content-between">
+                                            <p class="mb-0"><strong>References Checked</strong></p>
+                                            <small class="text-muted">2024-02-15 02:15 PM</small>
+                                        </div>
+                                        <p class="text-muted mb-0">All references contacted and verified</p>
+                                    </div>
+                                </div>
+                                <div class="timeline-item">
+                                    <div class="timeline-marker bg-warning"></div>
+                                    <div class="timeline-content">
+                                        <div class="d-flex justify-content-between">
+                                            <p class="mb-0"><strong>Pending Review</strong></p>
+                                            <small class="text-muted">2024-02-15 03:00 PM</small>
+                                        </div>
+                                        <p class="text-muted mb-0">Awaiting final decision</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger">Reject</button>
+                    <button type="button" class="btn btn-success">Approve</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filter Modal -->
+    <div class="modal fade" id="filterModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Filter Applications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Date Range</label>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <input type="date" class="form-control" placeholder="Start Date">
+                                </div>
+                                <div class="col-6">
+                                    <input type="date" class="form-control" placeholder="End Date">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Status</label>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="statusPending">
+                                        <label class="form-check-label" for="statusPending">
+                                            Pending Review
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="statusApproved">
+                                        <label class="form-check-label" for="statusApproved">
+                                            Approved
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="statusRejected">
+                                        <label class="form-check-label" for="statusRejected">
+                                            Rejected
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="statusWithdrawn">
+                                        <label class="form-check-label" for="statusWithdrawn">
+                                            Withdrawn
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Pet Type</label>
+                            <div class="row g-2">
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeDog">
+                                        <label class="form-check-label" for="typeDog">
+                                            Dogs
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeCat">
+                                        <label class="form-check-label" for="typeCat">
+                                            Cats
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="typeOther">
+                                        <label class="form-check-label" for="typeOther">
+                                            Other
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Sort By</label>
+                            <select class="form-select">
+                                <option value="newest">Newest First</option>
+                                <option value="oldest">Oldest First</option>
+                                <option value="name">Applicant Name</option>
+                                <option value="pet">Pet Name</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Apply Filters</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .timeline-item {
+            position: relative;
+            padding-bottom: 1.5rem;
+        }
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        .timeline-marker {
+            position: absolute;
+            left: -30px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+        }
+        .timeline-item:not(:last-child) .timeline-marker::after {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 15px;
+            bottom: -30px;
+            width: 2px;
+            margin-left: -1px;
+            background-color: #dee2e6;
+        }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <style>
+        .profile-img {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+        }
+        .profile-img-lg {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+        }
+        .pet-img {
+            width: 64px;
+            height: 64px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../pets/available.html">Available Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../adoption/process.html">Adoption Process</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                 class="rounded-circle me-2 profile-img" 
+                                 alt="Sarah Johnson">
+                            Sarah Johnson
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item active" href="profile.html"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="applications.html"><i class="fas fa-file-alt fa-fw me-2"></i>Applications</a></li>
+                            <li><a class="dropdown-item" href="favorites.html"><i class="fas fa-heart fa-fw me-2"></i>Favorites</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="../auth/login.html"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <div class="row">
+            <!-- Profile Information -->
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body text-center">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" 
+                             class="rounded-circle mb-3 profile-img-lg" 
+                             alt="Sarah Johnson">
+                        <h5 class="mb-1">Sarah Johnson</h5>
+                        <p class="text-muted mb-3">Member since January 2024</p>
+                        <div class="d-grid">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-edit me-2"></i>Edit Profile
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <i class="fas fa-envelope fa-fw me-2 text-muted"></i>sarah.johnson@email.com
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-phone fa-fw me-2 text-muted"></i>(555) 123-4567
+                        </li>
+                        <li class="list-group-item">
+                            <i class="fas fa-map-marker-alt fa-fw me-2 text-muted"></i>San Francisco, CA
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Adoption Applications -->
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Recent Applications</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                         class="rounded me-3 pet-img" 
+                                         alt="Luna">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-1">Luna</h6>
+                                            <span class="badge bg-warning">Pending Review</span>
+                                        </div>
+                                        <p class="mb-1 text-muted">Application submitted on Feb 18, 2024</p>
+                                        <small>Cat • 2 years old • Female</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                         class="rounded me-3 pet-img" 
+                                         alt="Max">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-1">Max</h6>
+                                            <span class="badge bg-success">Approved</span>
+                                        </div>
+                                        <p class="mb-1 text-muted">Application submitted on Feb 10, 2024</p>
+                                        <small>Dog • 1 year old • Male</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Favorite Pets -->
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0">Favorite Pets</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="list-group list-group-flush">
+                            <div class="list-group-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                         class="rounded me-3 pet-img" 
+                                         alt="Bella">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-1">Bella</h6>
+                                            <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                        </div>
+                                        <p class="mb-1">Cat • 3 years old • Female</p>
+                                        <small class="text-muted">Added to favorites on Feb 15, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="list-group-item">
+                                <div class="d-flex align-items-center">
+                                    <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
+                                         class="rounded me-3 pet-img" 
+                                         alt="Charlie">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <h6 class="mb-1">Charlie</h6>
+                                            <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                        </div>
+                                        <p class="mb-1">Bird • 6 months old • Male</p>
+                                        <small class="text-muted">Added to favorites on Feb 12, 2024</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

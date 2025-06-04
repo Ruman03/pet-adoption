@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Coordinator - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar text-white" style="width: 250px;">
+            <div class="sidebar-brand">
+                <i class="fas fa-hands-helping"></i>
+                <span>Volunteer Portal</span>
+            </div>
+            <hr class="sidebar-divider">
+            <div class="nav flex-column">
+                <a href="dashboard.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="coordinator.html" class="nav-link active text-white">
+                    <i class="fas fa-fw fa-clipboard-list"></i>
+                    <span>Opportunities</span>
+                </a>
+                <a href="applications.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-user-check"></i>
+                    <span>Applications</span>
+                </a>
+                <a href="schedule.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-calendar"></i>
+                    <span>Schedule</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1">
+            <!-- Top Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <div class="container-fluid">
+                    <button class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="d-flex align-items-center ml-auto">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Sarah Wilson</span>
+                                <img class="img-profile rounded-circle" src="https://via.placeholder.com/40">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2"></i> Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content -->
+            <div class="container-fluid p-4">
+                <!-- Page Header -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Volunteer Opportunities</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newOpportunityModal">
+                        <i class="fas fa-plus fa-sm"></i> Post New Opportunity
+                    </button>
+                </div>
+
+                <!-- Opportunities Grid -->
+                <div class="row g-4">
+                    <!-- Opportunity Card -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Event">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">Pet Care Assistant</h5>
+                                    <span class="badge bg-primary">5/10 slots</span>
+                                </div>
+                                <p class="card-text">Help care for our shelter pets, including feeding, cleaning, and socialization.</p>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar-alt me-1"></i> Dec 15 - Dec 31, 2023
+                                        <br>
+                                        <i class="fas fa-clock me-1"></i> 9:00 AM - 1:00 PM
+                                        <br>
+                                        <i class="fas fa-map-marker-alt me-1"></i> Main Shelter
+                                    </small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#viewApplicantsModal">
+                                        View Applicants (8)
+                                    </button>
+                                    <button class="btn btn-outline-secondary">
+                                        Edit Opportunity
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opportunity Card -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Event">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">Adoption Event Helper</h5>
+                                    <span class="badge bg-success">2/5 slots</span>
+                                </div>
+                                <p class="card-text">Assist in organizing and running our weekend adoption events.</p>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar-alt me-1"></i> Dec 16, 2023
+                                        <br>
+                                        <i class="fas fa-clock me-1"></i> 10:00 AM - 4:00 PM
+                                        <br>
+                                        <i class="fas fa-map-marker-alt me-1"></i> City Park
+                                    </small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#viewApplicantsModal">
+                                        View Applicants (3)
+                                    </button>
+                                    <button class="btn btn-outline-secondary">
+                                        Edit Opportunity
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Opportunity Card -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Event">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">Foster Parent</h5>
+                                    <span class="badge bg-warning">3/8 slots</span>
+                                </div>
+                                <p class="card-text">Provide temporary homes for pets awaiting permanent adoption.</p>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-calendar-alt me-1"></i> Ongoing
+                                        <br>
+                                        <i class="fas fa-clock me-1"></i> Flexible Hours
+                                        <br>
+                                        <i class="fas fa-map-marker-alt me-1"></i> Home-based
+                                    </small>
+                                </div>
+                                <div class="d-grid gap-2">
+                                    <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#viewApplicantsModal">
+                                        View Applicants (5)
+                                    </button>
+                                    <button class="btn btn-outline-secondary">
+                                        Edit Opportunity
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- New Opportunity Modal -->
+    <div class="modal fade" id="newOpportunityModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Post New Volunteer Opportunity</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Title</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Description</label>
+                            <textarea class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Start Date</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                            <div class="col">
+                                <label class="form-label">End Date</label>
+                                <input type="date" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label class="form-label">Start Time</label>
+                                <input type="time" class="form-control">
+                            </div>
+                            <div class="col">
+                                <label class="form-label">End Time</label>
+                                <input type="time" class="form-control">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Location</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Number of Slots</label>
+                            <input type="number" class="form-control" required min="1">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Event Image</label>
+                            <input type="file" class="form-control" accept="image/*">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Requirements</label>
+                            <textarea class="form-control" rows="2"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Post Opportunity</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Applicants Modal -->
+    <div class="modal fade" id="viewApplicantsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Applicants - Pet Care Assistant</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Experience</th>
+                                    <th>Availability</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Smith</td>
+                                    <td>2 years pet sitting</td>
+                                    <td>Weekends</td>
+                                    <td><span class="badge bg-warning">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-success btn-sm">Approve</button>
+                                        <button class="btn btn-danger btn-sm">Reject</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mary Johnson</td>
+                                    <td>Former vet assistant</td>
+                                    <td>Weekday mornings</td>
+                                    <td><span class="badge bg-warning">Pending</span></td>
+                                    <td>
+                                        <button class="btn btn-success btn-sm">Approve</button>
+                                        <button class="btn btn-danger btn-sm">Reject</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

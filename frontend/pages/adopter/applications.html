@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Applications - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="browse.html">Browse Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="applications.html">My Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="favorites.html">Favorites</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Profile">
+                            John Doe
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">My Applications</h2>
+            <div class="btn-group">
+                <button class="btn btn-outline-primary active">All</button>
+                <button class="btn btn-outline-primary">Pending</button>
+                <button class="btn btn-outline-primary">Approved</button>
+                <button class="btn btn-outline-primary">Rejected</button>
+            </div>
+        </div>
+
+        <!-- Applications List -->
+        <div class="row g-4">
+            <!-- Application Card -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/200" class="img-fluid rounded-start h-100 object-fit-cover" alt="Pet">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">Max</h5>
+                                    <span class="badge bg-warning">Pending Review</span>
+                                </div>
+                                <p class="card-text text-muted mb-2">Golden Retriever • 2 years old</p>
+                                <p class="card-text"><small class="text-muted">Applied on Dec 10, 2023</small></p>
+                                <div class="d-flex gap-2 mt-3">
+                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#applicationDetailsModal">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <button class="btn btn-outline-danger btn-sm">
+                                        <i class="fas fa-times"></i> Withdraw
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Card -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/200" class="img-fluid rounded-start h-100 object-fit-cover" alt="Pet">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">Luna</h5>
+                                    <span class="badge bg-success">Approved</span>
+                                </div>
+                                <p class="card-text text-muted mb-2">Siamese Cat • 1 year old</p>
+                                <p class="card-text"><small class="text-muted">Applied on Dec 5, 2023</small></p>
+                                <div class="d-flex gap-2 mt-3">
+                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#applicationDetailsModal">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <button class="btn btn-success btn-sm">
+                                        <i class="fas fa-calendar"></i> Schedule Visit
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Application Card -->
+            <div class="col-md-6">
+                <div class="card h-100">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/200" class="img-fluid rounded-start h-100 object-fit-cover" alt="Pet">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">Rocky</h5>
+                                    <span class="badge bg-danger">Rejected</span>
+                                </div>
+                                <p class="card-text text-muted mb-2">German Shepherd • 3 years old</p>
+                                <p class="card-text"><small class="text-muted">Applied on Nov 28, 2023</small></p>
+                                <div class="d-flex gap-2 mt-3">
+                                    <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#applicationDetailsModal">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <button class="btn btn-outline-primary btn-sm">
+                                        <i class="fas fa-redo"></i> Apply Again
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Application Details Modal -->
+    <div class="modal fade" id="applicationDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Application Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/300" class="img-fluid rounded mb-3" alt="Pet">
+                            <h5>Max</h5>
+                            <p class="text-muted">Golden Retriever • 2 years old</p>
+                            <p><strong>Shelter:</strong> Happy Paws Shelter</p>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="mb-4">
+                                <h6>Application Status</h6>
+                                <div class="progress">
+                                    <div class="progress-bar bg-warning" style="width: 50%">Pending Review</div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h6>Application Timeline</h6>
+                                <div class="timeline">
+                                    <div class="timeline-item">
+                                        <p class="small text-muted mb-1">December 10, 2023</p>
+                                        <p class="mb-0">Application submitted</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="small text-muted mb-1">December 11, 2023</p>
+                                        <p class="mb-0">Initial review completed</p>
+                                    </div>
+                                    <div class="timeline-item">
+                                        <p class="small text-muted mb-1">December 12, 2023</p>
+                                        <p class="mb-0">Background check in progress</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-4">
+                                <h6>Application Details</h6>
+                                <table class="table">
+                                    <tr>
+                                        <th>Submitted On</th>
+                                        <td>December 10, 2023</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Application ID</th>
+                                        <td>#APP123456</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Home Check</th>
+                                        <td>Scheduled for Dec 15, 2023</td>
+                                    </tr>
+                                    <tr>
+                                        <th>References</th>
+                                        <td>2 of 3 verified</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="mb-4">
+                                <h6>Next Steps</h6>
+                                <ul class="list-unstyled">
+                                    <li><i class="fas fa-check-circle text-success me-2"></i> Complete background check</li>
+                                    <li><i class="fas fa-clock text-warning me-2"></i> Schedule home visit</li>
+                                    <li><i class="fas fa-clock text-warning me-2"></i> Final approval</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Contact Shelter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

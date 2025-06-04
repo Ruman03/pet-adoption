@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Available Pets - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+    <style>
+        .pet-image {
+            height: 250px;
+            object-fit: cover;
+            width: 100%;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            transition: transform 0.3s ease;
+        }
+        .favorite-btn {
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .favorite-btn:hover {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="available.html">Available Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../adoption/process.html">Adoption Process</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="../auth/login.html" class="btn btn-outline-light me-2">Login</a>
+                    <a href="../auth/register.html" class="btn btn-light">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Search and Filter Section -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search pets...">
+                            <button class="btn btn-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select">
+                            <option value="">All Species</option>
+                            <option value="dog">Dogs</option>
+                            <option value="cat">Cats</option>
+                            <option value="bird">Birds</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select">
+                            <option value="">All Ages</option>
+                            <option value="baby">Baby</option>
+                            <option value="young">Young</option>
+                            <option value="adult">Adult</option>
+                            <option value="senior">Senior</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select">
+                            <option value="">All Sizes</option>
+                            <option value="small">Small</option>
+                            <option value="medium">Medium</option>
+                            <option value="large">Large</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <select class="form-select">
+                            <option value="newest">Newest First</option>
+                            <option value="oldest">Oldest First</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pets Grid -->
+        <div class="row g-4">
+            <!-- Pet Card 1 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         class="card-img-top pet-image" 
+                         alt="Luna the cat">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Luna</h5>
+                            <span class="badge bg-primary">Cat</span>
+                        </div>
+                        <p class="card-text text-muted small mb-2">Female • 2 years • Medium</p>
+                        <p class="card-text">Sweet and playful cat looking for a loving home. Great with children and other pets.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary">View Details</button>
+                            <i class="far fa-heart fs-5 favorite-btn"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Card 2 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         class="card-img-top pet-image" 
+                         alt="Max the dog">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Max</h5>
+                            <span class="badge bg-primary">Dog</span>
+                        </div>
+                        <p class="card-text text-muted small mb-2">Male • 1 year • Large</p>
+                        <p class="card-text">Energetic and friendly dog who loves outdoor activities and playing fetch.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary">View Details</button>
+                            <i class="far fa-heart fs-5 favorite-btn"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Card 3 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         class="card-img-top pet-image" 
+                         alt="Charlie the parakeet">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Charlie</h5>
+                            <span class="badge bg-primary">Bird</span>
+                        </div>
+                        <p class="card-text text-muted small mb-2">Male • 6 months • Small</p>
+                        <p class="card-text">Friendly parakeet who loves to sing and interact with people.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary">View Details</button>
+                            <i class="far fa-heart fs-5 favorite-btn"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Card 4 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1543852786-1cf6624b9987?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         class="card-img-top pet-image" 
+                         alt="Bella the cat">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Bella</h5>
+                            <span class="badge bg-primary">Cat</span>
+                        </div>
+                        <p class="card-text text-muted small mb-2">Female • 3 years • Small</p>
+                        <p class="card-text">Gentle and affectionate cat who enjoys lounging in sunny spots.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary">View Details</button>
+                            <i class="far fa-heart fs-5 favorite-btn"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Card 5 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         class="card-img-top pet-image" 
+                         alt="Rocky the dog">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Rocky</h5>
+                            <span class="badge bg-primary">Dog</span>
+                        </div>
+                        <p class="card-text text-muted small mb-2">Male • 4 years • Large</p>
+                        <p class="card-text">Loyal and protective dog, perfect for an active family.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary">View Details</button>
+                            <i class="far fa-heart fs-5 favorite-btn"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pet Card 6 -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" 
+                         class="card-img-top pet-image" 
+                         alt="Rio the parrot">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <h5 class="card-title mb-0">Rio</h5>
+                            <span class="badge bg-primary">Bird</span>
+                        </div>
+                        <p class="card-text text-muted small mb-2">Male • 1 year • Small</p>
+                        <p class="card-text">Colorful and talkative parrot who knows several words.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <button class="btn btn-primary">View Details</button>
+                            <i class="far fa-heart fs-5 favorite-btn"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="mt-4">
+            <ul class="pagination justify-content-center">
+                <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

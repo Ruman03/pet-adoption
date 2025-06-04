@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shelter Management - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <div class="sidebar text-white" style="width: 250px;">
+            <div class="sidebar-brand">
+                <i class="fas fa-paw"></i>
+                <span>Admin Panel</span>
+            </div>
+            <hr class="sidebar-divider">
+            <div class="nav flex-column">
+                <a href="dashboard.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="users.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Users</span>
+                </a>
+                <a href="shelters.html" class="nav-link active text-white">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Shelters</span>
+                </a>
+                <a href="reports.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-chart-bar"></i>
+                    <span>Reports</span>
+                </a>
+                <a href="settings.html" class="nav-link text-white">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex-grow-1">
+            <!-- Top Navigation -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+                <div class="container-fluid">
+                    <button class="btn btn-link d-md-none rounded-circle mr-3">
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <div class="d-flex align-items-center ml-auto">
+                        <div class="dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin User</span>
+                                <img class="img-profile rounded-circle" src="https://via.placeholder.com/40">
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw mr-2"></i> Profile</a></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw mr-2"></i> Settings</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2"></i> Logout</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Content -->
+            <div class="container-fluid p-4">
+                <!-- Page Header -->
+                <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Shelter Management</h1>
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addShelterModal">
+                        <i class="fas fa-plus fa-sm"></i> Add New Shelter
+                    </button>
+                </div>
+
+                <!-- Filters -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label">Status</label>
+                                <select class="form-select">
+                                    <option value="">All Status</option>
+                                    <option value="active">Active</option>
+                                    <option value="pending">Pending Approval</option>
+                                    <option value="suspended">Suspended</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Location</label>
+                                <select class="form-select">
+                                    <option value="">All Locations</option>
+                                    <option value="north">North Region</option>
+                                    <option value="south">South Region</option>
+                                    <option value="east">East Region</option>
+                                    <option value="west">West Region</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Search</label>
+                                <input type="text" class="form-control" placeholder="Search by name, location...">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label d-none d-md-block">&nbsp;</label>
+                                <button class="btn btn-primary w-100">Apply Filters</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Shelters Grid -->
+                <div class="row g-4">
+                    <!-- Shelter Card -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Shelter">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">Happy Paws Shelter</h5>
+                                    <span class="badge bg-success">Active</span>
+                                </div>
+                                <p class="text-muted mb-2">
+                                    <i class="fas fa-map-marker-alt me-1"></i> New York, NY
+                                </p>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-phone me-1"></i> (555) 123-4567
+                                        <br>
+                                        <i class="fas fa-envelope me-1"></i> contact@happypaws.com
+                                        <br>
+                                        <i class="fas fa-calendar me-1"></i> Joined: Dec 1, 2023
+                                    </small>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-info btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#viewShelterModal">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <button class="btn btn-warning btn-sm">
+                                        <i class="fas fa-ban"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Shelter Card -->
+                    <div class="col-md-6 col-lg-4">
+                        <div class="card h-100 shadow-sm">
+                            <img src="https://via.placeholder.com/300x200" class="card-img-top" alt="Shelter">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <h5 class="card-title mb-0">Furry Friends Haven</h5>
+                                    <span class="badge bg-warning">Pending</span>
+                                </div>
+                                <p class="text-muted mb-2">
+                                    <i class="fas fa-map-marker-alt me-1"></i> Los Angeles, CA
+                                </p>
+                                <div class="mb-3">
+                                    <small class="text-muted">
+                                        <i class="fas fa-phone me-1"></i> (555) 987-6543
+                                        <br>
+                                        <i class="fas fa-envelope me-1"></i> info@furryfriends.com
+                                        <br>
+                                        <i class="fas fa-calendar me-1"></i> Applied: Dec 10, 2023
+                                    </small>
+                                </div>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-info btn-sm flex-grow-1" data-bs-toggle="modal" data-bs-target="#viewShelterModal">
+                                        <i class="fas fa-eye"></i> View Details
+                                    </button>
+                                    <button class="btn btn-success btn-sm">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="btn btn-danger btn-sm">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav class="mt-4">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Shelter Modal -->
+    <div class="modal fade" id="addShelterModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Shelter</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Shelter Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Address</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">City</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">State</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">ZIP Code</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" rows="3" required></textarea>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Shelter Image</label>
+                                <input type="file" class="form-control" accept="image/*">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Operating Hours</label>
+                                <input type="text" class="form-control" placeholder="e.g., Mon-Fri 9AM-5PM">
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Capacity</label>
+                                <input type="number" class="form-control" placeholder="Number of animals">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Add Shelter</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Shelter Modal -->
+    <div class="modal fade" id="viewShelterModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Shelter Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="https://via.placeholder.com/400x300" class="img-fluid rounded mb-3" alt="Shelter">
+                        </div>
+                        <div class="col-md-6">
+                            <h4>Happy Paws Shelter</h4>
+                            <p class="text-muted">
+                                <i class="fas fa-map-marker-alt me-1"></i> 123 Main St, New York, NY 10001
+                            </p>
+                            <hr>
+                            <div class="mb-3">
+                                <h6>Contact Information</h6>
+                                <p class="mb-1"><i class="fas fa-phone me-2"></i> (555) 123-4567</p>
+                                <p class="mb-1"><i class="fas fa-envelope me-2"></i> contact@happypaws.com</p>
+                                <p class="mb-1"><i class="fas fa-clock me-2"></i> Mon-Fri 9AM-5PM</p>
+                            </div>
+                            <hr>
+                            <div class="mb-3">
+                                <h6>Statistics</h6>
+                                <p class="mb-1">Total Pets: 45</p>
+                                <p class="mb-1">Adoptions: 120</p>
+                                <p class="mb-1">Success Rate: 85%</p>
+                            </div>
+                        </div>
+                        <div class="col-12 mt-3">
+                            <h6>About</h6>
+                            <p>Happy Paws Shelter is dedicated to providing care and finding forever homes for abandoned and rescued animals. We maintain high standards of animal care and work closely with veterinarians to ensure all our pets are healthy and ready for adoption.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Edit Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

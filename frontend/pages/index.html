@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../css/style.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1450778869180-41d0601e046e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+            color: white;
+        }
+        .portal-card {
+            transition: transform 0.3s ease;
+        }
+        .portal-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="pets/available.html">Available Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="adoption/process.html">Adoption Process</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="volunteer/opportunities.html">Volunteer</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="foster/program.html">Foster</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="auth/login.html" class="btn btn-outline-light me-2">Login</a>
+                    <a href="auth/register.html" class="btn btn-light">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section d-flex align-items-center">
+        <div class="container text-center">
+            <h1 class="display-4 mb-4">Find Your Perfect Companion</h1>
+            <p class="lead mb-4">Give a loving home to pets in need. Browse our available pets or learn how you can help.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="pets/available.html" class="btn btn-primary btn-lg">
+                    <i class="fas fa-search me-2"></i>Find a Pet
+                </a>
+                <a href="volunteer/opportunities.html" class="btn btn-outline-light btn-lg">
+                    <i class="fas fa-hand-holding-heart me-2"></i>Help Out
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portal Access Section -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Access Portals</h2>
+            <div class="row g-4">
+                <!-- Admin Portal -->
+                <div class="col-md-4">
+                    <div class="card h-100 portal-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-user-shield fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Admin Portal</h5>
+                            <p class="card-text">System administration and management dashboard.</p>
+                            <a href="admin/dashboard.html" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Access Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Veterinarian Portal -->
+                <div class="col-md-4">
+                    <div class="card h-100 portal-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-stethoscope fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Veterinarian Portal</h5>
+                            <p class="card-text">Medical records and pet health management.</p>
+                            <a href="vet/dashboard.html" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Access Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Staff Portal -->
+                <div class="col-md-4">
+                    <div class="card h-100 portal-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-users-cog fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Staff Portal</h5>
+                            <p class="card-text">Daily operations and pet care management.</p>
+                            <a href="staff/dashboard.html" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Access Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Adopter Portal -->
+                <div class="col-md-4">
+                    <div class="card h-100 portal-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-home fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Adopter Portal</h5>
+                            <p class="card-text">Manage your adoption applications and favorites.</p>
+                            <a href="user/profile.html" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Access Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Foster Portal -->
+                <div class="col-md-4">
+                    <div class="card h-100 portal-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-house-user fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Foster Portal</h5>
+                            <p class="card-text">Manage your foster pets and schedules.</p>
+                            <a href="foster/dashboard.html" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Access Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Volunteer Portal -->
+                <div class="col-md-4">
+                    <div class="card h-100 portal-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-hand-holding-heart fa-3x text-primary mb-3"></i>
+                            <h5 class="card-title">Volunteer Portal</h5>
+                            <p class="card-text">Manage your volunteer schedule and activities.</p>
+                            <a href="volunteer/dashboard.html" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt me-2"></i>Access Portal
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Stats -->
+    <section class="bg-light py-5">
+        <div class="container">
+            <div class="row g-4 text-center">
+                <div class="col-md-3">
+                    <h3 class="text-primary mb-2">85+</h3>
+                    <p class="mb-0">Pets Available</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="text-primary mb-2">543</h3>
+                    <p class="mb-0">Successful Adoptions</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="text-primary mb-2">100+</h3>
+                    <p class="mb-0">Active Volunteers</p>
+                </div>
+                <div class="col-md-3">
+                    <h3 class="text-primary mb-2">50+</h3>
+                    <p class="mb-0">Foster Homes</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <h5><i class="fas fa-paw me-2"></i>Pet Adoption</h5>
+                    <p class="mb-0">Making pet adoption easy, accessible, and safe for everyone.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="pets/available.html" class="text-white text-decoration-none">Available Pets</a></li>
+                        <li><a href="adoption/process.html" class="text-white text-decoration-none">Adoption Process</a></li>
+                        <li><a href="volunteer/opportunities.html" class="text-white text-decoration-none">Volunteer</a></li>
+                        <li><a href="foster/program.html" class="text-white text-decoration-none">Foster Program</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-phone me-2"></i>(555) 123-4567</li>
+                        <li><i class="fas fa-envelope me-2"></i>info@petadoption.com</li>
+                        <li><i class="fas fa-map-marker-alt me-2"></i>123 Pet Street, City, State</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Pet Adoption System. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 

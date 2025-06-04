@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pets Management - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="pets.html">Pets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="applications.html">Applications</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="health.html">Health Records</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="fosters.html">Foster Program</a>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Profile">
+                            John Smith
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Pets Management</h2>
+            <div class="d-flex gap-2">
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#importModal">
+                    <i class="fas fa-file-import me-2"></i>Import
+                </button>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addPetModal">
+                    <i class="fas fa-plus me-2"></i>Add Pet
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="row g-4 mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Total Pets</h6>
+                                <h3 class="mb-0">156</h3>
+                            </div>
+                            <i class="fas fa-paw fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Available</h6>
+                                <h3 class="mb-0">89</h3>
+                            </div>
+                            <i class="fas fa-check-circle fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">In Foster</h6>
+                                <h3 class="mb-0">42</h3>
+                            </div>
+                            <i class="fas fa-home fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-info text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="card-title mb-1">Adopted</h6>
+                                <h3 class="mb-0">25</h3>
+                            </div>
+                            <i class="fas fa-heart fa-2x opacity-50"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters and Search -->
+        <div class="card mb-4">
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">All Species</option>
+                            <option value="dog">Dogs</option>
+                            <option value="cat">Cats</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">All Statuses</option>
+                            <option value="available">Available</option>
+                            <option value="foster">In Foster</option>
+                            <option value="adopted">Adopted</option>
+                            <option value="medical">Medical Hold</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <select class="form-select">
+                            <option value="">All Ages</option>
+                            <option value="baby">Baby</option>
+                            <option value="young">Young</option>
+                            <option value="adult">Adult</option>
+                            <option value="senior">Senior</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Search pets...">
+                            <button class="btn btn-outline-primary">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pets Table -->
+        <div class="card">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead>
+                        <tr>
+                            <th>Pet</th>
+                            <th>ID</th>
+                            <th>Species</th>
+                            <th>Age</th>
+                            <th>Status</th>
+                            <th>Location</th>
+                            <th>Applications</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Pet">
+                                    <div>
+                                        <h6 class="mb-0">Luna</h6>
+                                        <small class="text-muted">Female</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>#A123</td>
+                            <td>Cat</td>
+                            <td>2 months</td>
+                            <td><span class="badge bg-success">Available</span></td>
+                            <td>Shelter</td>
+                            <td>
+                                <span class="badge bg-primary">3 pending</span>
+                            </td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editPetModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewPetModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-archive"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Pet">
+                                    <div>
+                                        <h6 class="mb-0">Max</h6>
+                                        <small class="text-muted">Male</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>#A124</td>
+                            <td>Dog</td>
+                            <td>1 year</td>
+                            <td><span class="badge bg-warning">In Foster</span></td>
+                            <td>Sarah Wilson</td>
+                            <td>
+                                <span class="badge bg-secondary">0 pending</span>
+                            </td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editPetModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewPetModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-archive"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-2" alt="Pet">
+                                    <div>
+                                        <h6 class="mb-0">Charlie</h6>
+                                        <small class="text-muted">Male</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>#A125</td>
+                            <td>Dog</td>
+                            <td>3 years</td>
+                            <td><span class="badge bg-info">Adopted</span></td>
+                            <td>Forever Home</td>
+                            <td>
+                                <span class="badge bg-success">Completed</span>
+                            </td>
+                            <td>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#editPetModal">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-info" data-bs-toggle="modal" data-bs-target="#viewPetModal">
+                                        <i class="fas fa-eye"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-outline-danger">
+                                        <i class="fas fa-archive"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="card-footer bg-white">
+                <nav class="d-flex justify-content-between align-items-center">
+                    <p class="small text-muted mb-0">Showing 1-3 of 156 pets</p>
+                    <ul class="pagination mb-0">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Previous</a>
+                        </li>
+                        <li class="page-item active">
+                            <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Pet Modal -->
+    <div class="modal fade" id="addPetModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add New Pet</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label">Name</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Species</label>
+                                <select class="form-select" required>
+                                    <option value="">Select species...</option>
+                                    <option value="dog">Dog</option>
+                                    <option value="cat">Cat</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Breed</label>
+                                <input type="text" class="form-control" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Age</label>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" required>
+                                    <select class="form-select">
+                                        <option value="months">Months</option>
+                                        <option value="years">Years</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select" required>
+                                    <option value="">Select gender...</option>
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Size</label>
+                                <select class="form-select" required>
+                                    <option value="">Select size...</option>
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="large">Large</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Description</label>
+                                <textarea class="form-control" rows="3" required></textarea>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Status</label>
+                                <select class="form-select" required>
+                                    <option value="available">Available</option>
+                                    <option value="foster">In Foster</option>
+                                    <option value="medical">Medical Hold</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label">Location</label>
+                                <select class="form-select" required>
+                                    <option value="shelter">Shelter</option>
+                                    <option value="foster">Foster Home</option>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Photos</label>
+                                <input type="file" class="form-control" multiple accept="image/*">
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label">Medical History</label>
+                                <div class="row g-2">
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="vaccinated">
+                                            <label class="form-check-label" for="vaccinated">
+                                                Vaccinated
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="spayedNeutered">
+                                            <label class="form-check-label" for="spayedNeutered">
+                                                Spayed/Neutered
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="microchipped">
+                                            <label class="form-check-label" for="microchipped">
+                                                Microchipped
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Add Pet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Pet Modal -->
+    <div class="modal fade" id="viewPetModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Pet Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="https://via.placeholder.com/300" class="img-fluid rounded mb-3" alt="Pet">
+                            <div class="d-grid gap-2">
+                                <button class="btn btn-outline-primary btn-sm">
+                                    <i class="fas fa-images me-2"></i>View All Photos
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div>
+                                    <h4 class="mb-0">Luna</h4>
+                                    <p class="text-muted mb-0">ID: #A123</p>
+                                </div>
+                                <span class="badge bg-success">Available</span>
+                            </div>
+                            <table class="table">
+                                <tr>
+                                    <th width="30%">Species</th>
+                                    <td>Cat</td>
+                                </tr>
+                                <tr>
+                                    <th>Breed</th>
+                                    <td>Domestic Shorthair</td>
+                                </tr>
+                                <tr>
+                                    <th>Age</th>
+                                    <td>2 months</td>
+                                </tr>
+                                <tr>
+                                    <th>Gender</th>
+                                    <td>Female</td>
+                                </tr>
+                                <tr>
+                                    <th>Size</th>
+                                    <td>Small</td>
+                                </tr>
+                                <tr>
+                                    <th>Location</th>
+                                    <td>Shelter</td>
+                                </tr>
+                            </table>
+                            <h6>Medical History</h6>
+                            <div class="mb-3">
+                                <span class="badge bg-success me-2">Vaccinated</span>
+                                <span class="badge bg-warning me-2">Not Spayed</span>
+                                <span class="badge bg-success">Microchipped</span>
+                            </div>
+                            <h6>Description</h6>
+                            <p>Luna is a sweet and playful kitten who loves attention. She gets along well with other cats and would make a perfect addition to any family.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Edit Details</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import Modal -->
+    <div class="modal fade" id="importModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Import Pets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Upload File</label>
+                            <input type="file" class="form-control" accept=".csv,.xlsx">
+                            <div class="form-text">Upload a CSV or Excel file with pet data</div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="headerRow">
+                                <label class="form-check-label" for="headerRow">
+                                    File contains header row
+                                </label>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Template</label>
+                            <div class="d-grid">
+                                <button type="button" class="btn btn-outline-primary">
+                                    <i class="fas fa-download me-2"></i>Download Import Template
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Import</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
