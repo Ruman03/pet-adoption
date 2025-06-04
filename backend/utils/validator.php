@@ -60,11 +60,65 @@ class Validator {
                             $errors[$field][] = "The $field field must be a valid date in YYYY-MM-DD format.";
                         }
                         break;
+                    case 'datetime':
+                        if (!self::validateDatetime($value)) {
+                            $errors[$field][] = "The $field field must be a valid datetime.";
+                        }
+                        break;
+                    case 'phone':
+                        if (!self::validatePhone($value)) {
+                            $errors[$field][] = "The $field field must be a valid phone number.";
+                        }
+                        break;
+                    case 'array':
+                        if (!self::validateArray($value)) {
+                            $errors[$field][] = "The $field field must be an array.";
+                        }
+                        break;
+                    case 'json':
+                        if (!self::validateJson($value)) {
+                            $errors[$field][] = "The $field field must be a valid JSON string.";
+                        }
+                        break;
+                    case 'url':
+                        if (!self::validateUrl($value)) {
+                            $errors[$field][] = "The $field field must be a valid URL.";
+                        }
+                        break;
                     // Add more validation rules as needed (e.g., numeric, date, etc.)
                 }
             }
         }
         return $errors;
+    }
+
+    private static function validateDatetime($value) {
+        $formats = ['Y-m-d H:i:s', 'Y-m-d H:i', 'Y-m-d\TH:i:s', 'Y-m-d\TH:i'];
+        foreach ($formats as $format) {
+            $date = DateTime::createFromFormat($format, $value);
+            if ($date && $date->format($format) === $value) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static function validatePhone($value) {
+        // Basic phone validation - allows various formats
+        return preg_match('/^[\+]?[1-9][\d]{0,15}$/', preg_replace('/[\s\-\(\)]/', '', $value));
+    }
+
+    private static function validateArray($value) {
+        return is_array($value);
+    }
+
+    private static function validateJson($value) {
+        json_decode($value);
+        return json_last_error() === JSON_ERROR_NONE;
+    }
+
+    private static function validateUrl($value) {
+        return filter_var($value, FILTER_VALIDATE_URL) !== false;
     }
 }
 ?>

@@ -39,20 +39,19 @@
                         <a class="nav-link" href="applications.html">Applications</a>
                     </li>
                 </ul>
-                <div class="d-flex align-items-center">
-                    <div class="dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                <div class="d-flex align-items-center">                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" id="userDropdown">
                             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" 
                                  class="rounded-circle me-2" 
-                                 alt="Sarah Johnson"
+                                 alt="User"
                                  style="width: 32px; height: 32px; object-fit: cover;">
-                            Sarah Johnson
+                            <span id="userName">Loading...</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="profile.html"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
                             <li><a class="dropdown-item" href="settings.html"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="../auth/login.html"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -73,9 +72,7 @@
                     <i class="fas fa-plus me-2"></i>Add Task
                 </button>
             </div>
-        </div>
-
-        <!-- Task Statistics -->
+        </div>        <!-- Task Statistics -->
         <div class="row g-4 mb-4">
             <div class="col-md-3">
                 <div class="card bg-primary text-white">
@@ -83,7 +80,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">Total Tasks</h6>
-                                <h3 class="mb-0">12</h3>
+                                <h3 class="mb-0" id="totalTasksCount">0</h3>
                             </div>
                             <i class="fas fa-tasks fa-2x opacity-50"></i>
                         </div>
@@ -96,7 +93,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">Completed</h6>
-                                <h3 class="mb-0">8</h3>
+                                <h3 class="mb-0" id="completedTasksCount">0</h3>
                             </div>
                             <i class="fas fa-check-circle fa-2x opacity-50"></i>
                         </div>
@@ -109,7 +106,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">In Progress</h6>
-                                <h3 class="mb-0">3</h3>
+                                <h3 class="mb-0" id="inProgressTasksCount">0</h3>
                             </div>
                             <i class="fas fa-clock fa-2x opacity-50"></i>
                         </div>
@@ -121,121 +118,47 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
-                                <h6 class="card-title mb-1">Upcoming</h6>
-                                <h3 class="mb-0">1</h3>
+                                <h6 class="card-title mb-1">Assigned</h6>
+                                <h3 class="mb-0" id="assignedTasksCount">0</h3>
                             </div>
                             <i class="fas fa-calendar-alt fa-2x opacity-50"></i>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <!-- Task List -->
-        <div class="card">
-            <div class="card-header bg-white">
-                <ul class="nav nav-tabs card-header-tabs">
+        </div><!-- Task List -->
+        <div class="card">            <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                <ul class="nav nav-tabs card-header-tabs mb-0">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">All Tasks</a>
+                        <a class="nav-link active" href="#" data-filter="my_tasks">My Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">In Progress</a>
+                        <a class="nav-link" href="#" data-filter="available">Available Tasks</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Completed</a>
+                        <a class="nav-link" href="#" data-filter="in_progress">In Progress</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-filter="completed">Completed</a>
                     </li>
                 </ul>
+                <button class="btn btn-primary btn-sm" id="addTaskBtn" data-bs-toggle="modal" data-bs-target="#newTaskModal">
+                    <i class="fas fa-plus me-1"></i>Add Task
+                </button>
             </div>
             <div class="card-body p-0">
-                <div class="list-group list-group-flush">
-                    <!-- Today's Tasks -->
-                    <div class="list-group-item bg-light">
-                        <h6 class="mb-0">Today</h6>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="task1">
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-1">Feed cats in Room A</h6>
-                                    <small class="text-muted">
-                                        <i class="fas fa-clock me-1"></i>9:00 AM - 10:00 AM
-                                        <span class="ms-2"><i class="fas fa-map-marker-alt me-1"></i>Main Shelter</span>
-                                    </small>
-                                </div>
-                            </div>
-                            <span class="badge bg-warning">In Progress</span>
+                <div id="tasksContainer" class="list-group list-group-flush">
+                    <!-- Tasks will be loaded dynamically -->
+                    <div class="text-center py-5">
+                        <div class="spinner-border" role="status">
+                            <span class="visually-hidden">Loading...</span>
                         </div>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="task2" checked>
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-1">Walk dogs - Morning Session</h6>
-                                    <small class="text-muted">
-                                        <i class="fas fa-clock me-1"></i>10:30 AM - 12:00 PM
-                                        <span class="ms-2"><i class="fas fa-map-marker-alt me-1"></i>Dog Park</span>
-                                    </small>
-                                </div>
-                            </div>
-                            <span class="badge bg-success">Completed</span>
-                        </div>
-                    </div>
-
-                    <!-- Tomorrow's Tasks -->
-                    <div class="list-group-item bg-light">
-                        <h6 class="mb-0">Tomorrow</h6>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="task3">
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-1">Assist with pet photography</h6>
-                                    <small class="text-muted">
-                                        <i class="fas fa-clock me-1"></i>2:00 PM - 4:00 PM
-                                        <span class="ms-2"><i class="fas fa-map-marker-alt me-1"></i>Photo Studio</span>
-                                    </small>
-                                </div>
-                            </div>
-                            <span class="badge bg-info">Upcoming</span>
-                        </div>
-                    </div>
-
-                    <!-- This Week's Tasks -->
-                    <div class="list-group-item bg-light">
-                        <h6 class="mb-0">This Week</h6>
-                    </div>
-                    <div class="list-group-item">
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="d-flex align-items-center">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="task4">
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-1">Help with adoption event setup</h6>
-                                    <small class="text-muted">
-                                        <i class="fas fa-clock me-1"></i>Saturday, 9:00 AM
-                                        <span class="ms-2"><i class="fas fa-map-marker-alt me-1"></i>Community Center</span>
-                                    </small>
-                                </div>
-                            </div>
-                            <span class="badge bg-warning">In Progress</span>
-                        </div>
+                        <p class="mt-2 text-muted">Loading tasks...</p>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- New Task Modal -->
+    </div>    <!-- New Task Modal -->
     <div class="modal fade" id="newTaskModal" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -244,48 +167,51 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form id="newTaskForm">
                         <div class="mb-3">
-                            <label class="form-label">Task Title</label>
-                            <input type="text" class="form-control" placeholder="Enter task title">
+                            <label class="form-label">Task Title *</label>
+                            <input type="text" class="form-control" name="title" required placeholder="Enter task title">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Description</label>
-                            <textarea class="form-control" rows="3" placeholder="Enter task description"></textarea>
+                            <textarea class="form-control" name="description" rows="3" placeholder="Enter task description"></textarea>
                         </div>
                         <div class="row mb-3">
                             <div class="col-md-6">
-                                <label class="form-label">Date</label>
-                                <input type="date" class="form-control">
+                                <label class="form-label">Date *</label>
+                                <input type="date" class="form-control" name="date" required>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Time</label>
-                                <input type="time" class="form-control">
+                                <input type="time" class="form-control" name="time">
                             </div>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Location</label>
-                            <select class="form-select">
-                                <option>Main Shelter</option>
-                                <option>Dog Park</option>
-                                <option>Cat Room</option>
-                                <option>Photo Studio</option>
-                                <option>Community Center</option>
+                            <select class="form-select" name="location">
+                                <option value="">Select location</option>
+                                <option value="Main Shelter">Main Shelter</option>
+                                <option value="Dog Park">Dog Park</option>
+                                <option value="Cat Room">Cat Room</option>
+                                <option value="Photo Studio">Photo Studio</option>
+                                <option value="Community Center">Community Center</option>
+                                <option value="Veterinary Clinic">Veterinary Clinic</option>
+                                <option value="Off-site Event">Off-site Event</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
-                            <select class="form-select">
-                                <option>Low</option>
-                                <option>Medium</option>
-                                <option>High</option>
+                            <select class="form-select" name="priority">
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                                <option value="high">High</option>
                             </select>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Add Task</button>
+                    <button type="button" class="btn btn-primary" id="saveTaskBtn">Add Task</button>
                 </div>
             </div>
         </div>
@@ -322,8 +248,12 @@
                 <p class="mb-0">&copy; 2024 Pet Adoption System. All rights reserved.</p>
             </div>
         </div>
-    </footer>
+    </footer>    <!-- Alert Container -->
+    <div id="alertContainer" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/api-client.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/volunteer-tasks.js"></script>
 </body>
-</html> 
+</html>

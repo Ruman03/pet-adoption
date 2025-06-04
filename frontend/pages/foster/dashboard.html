@@ -62,15 +62,19 @@
                 </div>
             </nav>
 
-            <!-- Content -->
-            <div class="container-fluid p-4">
+            <!-- Content -->            <div class="container-fluid p-4">
+                <!-- Alert Container -->
+                <div id="alert-container"></div>
+                
                 <!-- Page Header -->
                 <div class="d-sm-flex align-items-center justify-content-between mb-4">
                     <h1 class="h3 mb-0 text-gray-800">My Foster Pets</h1>
                 </div>
 
                 <!-- Foster Pets Grid -->
-                <div class="row g-4">
+                <div class="row g-4 foster-pets-container">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
                     <!-- Pet Card -->
                     <div class="col-md-6 col-lg-4">
                         <div class="card h-100 shadow-sm">
@@ -128,19 +132,17 @@
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Supply Request Section -->
+                </div>                <!-- Supply Request Section -->
                 <div class="card shadow-sm mt-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Supply Request</h6>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="supply-request-form">
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <label class="form-label">Item Type</label>
-                                    <select class="form-select">
+                                    <select class="form-select" name="item_type" required>
                                         <option value="">Select Item</option>
                                         <option value="food">Pet Food</option>
                                         <option value="medicine">Medicine</option>
@@ -149,11 +151,11 @@
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Quantity</label>
-                                    <input type="number" class="form-control" min="1">
+                                    <input type="number" class="form-control" name="quantity" min="1" required>
                                 </div>
                                 <div class="col-md-4">
                                     <label class="form-label">Urgency</label>
-                                    <select class="form-select">
+                                    <select class="form-select" name="urgency" required>
                                         <option value="low">Low</option>
                                         <option value="medium">Medium</option>
                                         <option value="high">High</option>
@@ -161,7 +163,7 @@
                                 </div>
                                 <div class="col-12">
                                     <label class="form-label">Notes</label>
-                                    <textarea class="form-control" rows="2"></textarea>
+                                    <textarea class="form-control" name="notes" rows="2"></textarea>
                                 </div>
                                 <div class="col-12">
                                     <button type="submit" class="btn btn-primary">Submit Request</button>
@@ -181,12 +183,11 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Report Pet Status</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
+                </div>                <div class="modal-body">
+                    <form id="status-report-form">
                         <div class="mb-3">
                             <label class="form-label">Overall Health</label>
-                            <select class="form-select" required>
+                            <select class="form-select" name="health_status" required>
                                 <option value="excellent">Excellent</option>
                                 <option value="good">Good</option>
                                 <option value="fair">Fair</option>
@@ -195,7 +196,7 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Eating Habits</label>
-                            <select class="form-select" required>
+                            <select class="form-select" name="eating_habits" required>
                                 <option value="normal">Normal</option>
                                 <option value="increased">Increased</option>
                                 <option value="decreased">Decreased</option>
@@ -203,26 +204,25 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Behavior</label>
-                            <select class="form-select" required>
+                            <select class="form-select" name="behavior" required>
                                 <option value="normal">Normal</option>
                                 <option value="active">More Active</option>
                                 <option value="lethargic">Lethargic</option>
                                 <option value="aggressive">Aggressive</option>
                             </select>
-                        </div>
-                        <div class="mb-3">
+                        </div>                        <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="3" required></textarea>
+                            <textarea class="form-control" name="notes" rows="3" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Concerns</label>
-                            <textarea class="form-control" rows="2"></textarea>
+                            <textarea class="form-control" name="concerns" rows="2"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Submit Report</button>
+                    <button type="submit" form="status-report-form" class="btn btn-primary">Submit Report</button>
                 </div>
             </div>
         </div>
@@ -235,31 +235,33 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Upload Pet Photos</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
+                </div>                <div class="modal-body">
+                    <form id="photo-upload-form">
                         <div class="mb-3">
                             <label class="form-label">Select Photos</label>
-                            <input type="file" class="form-control" accept="image/*" multiple>
+                            <input type="file" class="form-control" name="photos" accept="image/*" multiple required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Caption</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="caption">
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="2"></textarea>
+                            <textarea class="form-control" name="notes" rows="2"></textarea>
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Upload Photos</button>
+                    <button type="submit" form="photo-upload-form" class="btn btn-primary">Upload Photos</button>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/api-client.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/foster-dashboard.js"></script>
 </body>
 </html> 

@@ -68,9 +68,7 @@
             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newApplicationModal">
                 <i class="fas fa-plus me-2"></i>New Application
             </button>
-        </div>
-
-        <!-- Application Status -->
+        </div>        <!-- Application Status -->
         <div class="row g-4 mb-4">
             <div class="col-md-3">
                 <div class="card bg-primary text-white">
@@ -78,7 +76,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">Total Applications</h6>
-                                <h3 class="mb-0">3</h3>
+                                <h3 class="mb-0" id="totalApplicationsCount">0</h3>
                             </div>
                             <i class="fas fa-file-alt fa-2x opacity-50"></i>
                         </div>
@@ -91,7 +89,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">Approved</h6>
-                                <h3 class="mb-0">1</h3>
+                                <h3 class="mb-0" id="approvedCount">0</h3>
                             </div>
                             <i class="fas fa-check-circle fa-2x opacity-50"></i>
                         </div>
@@ -104,7 +102,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">Pending</h6>
-                                <h3 class="mb-0">1</h3>
+                                <h3 class="mb-0" id="pendingCount">0</h3>
                             </div>
                             <i class="fas fa-clock fa-2x opacity-50"></i>
                         </div>
@@ -117,7 +115,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">In Review</h6>
-                                <h3 class="mb-0">1</h3>
+                                <h3 class="mb-0" id="inReviewCount">0</h3>
                             </div>
                             <i class="fas fa-search fa-2x opacity-50"></i>
                         </div>
@@ -130,18 +128,16 @@
         <div class="card">
             <div class="card-header bg-white">
                 <div class="d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">My Applications</h5>
-                    <div>
-                        <button class="btn btn-outline-secondary btn-sm me-2">
+                    <h5 class="mb-0">My Applications</h5>                    <div>
+                        <button class="btn btn-outline-secondary btn-sm me-2" id="filterBtn">
                             <i class="fas fa-filter me-2"></i>Filter
                         </button>
-                        <button class="btn btn-outline-secondary btn-sm">
+                        <button class="btn btn-outline-secondary btn-sm" id="sortBtn">
                             <i class="fas fa-sort me-2"></i>Sort
                         </button>
                     </div>
                 </div>
-            </div>
-            <div class="table-responsive">
+            </div>            <div class="table-responsive">
                 <table class="table table-hover align-middle mb-0">
                     <thead>
                         <tr>
@@ -152,60 +148,8 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-paw text-primary me-3"></i>
-                                    <div>
-                                        <h6 class="mb-0">Animal Care Volunteer</h6>
-                                        <small class="text-muted">Main Shelter</small>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Feb 15, 2024</td>
-                            <td><span class="badge bg-success">Approved</span></td>
-                            <td>Complete orientation</td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary me-2">View Details</button>
-                                <button class="btn btn-sm btn-outline-success">Start Training</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-calendar-alt text-primary me-3"></i>
-                                    <div>
-                                        <h6 class="mb-0">Event Coordinator</h6>
-                                        <small class="text-muted">Adoption Events</small>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Feb 18, 2024</td>
-                            <td><span class="badge bg-warning">Pending</span></td>
-                            <td>Awaiting interview</td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary">View Details</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="d-flex align-items-center">
-                                    <i class="fas fa-camera text-primary me-3"></i>
-                                    <div>
-                                        <h6 class="mb-0">Pet Photographer</h6>
-                                        <small class="text-muted">Marketing Team</small>
-                                    </div>
-                                </div>
-                            </td>
-                            <td>Feb 20, 2024</td>
-                            <td><span class="badge bg-info">In Review</span></td>
-                            <td>Portfolio review</td>
-                            <td>
-                                <button class="btn btn-sm btn-outline-primary me-2">View Details</button>
-                                <button class="btn btn-sm btn-outline-info">Upload Portfolio</button>
-                            </td>
-                        </tr>
+                    <tbody id="applicationsTableBody">
+                        <!-- Dynamic content will be loaded here -->
                     </tbody>
                 </table>
             </div>
@@ -219,28 +163,23 @@
                 <div class="modal-header">
                     <h5 class="modal-title">New Volunteer Application</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
+                </div>                <div class="modal-body">
+                    <form id="newApplicationForm">
                         <div class="row mb-3">
                             <div class="col-md-6">
                                 <label class="form-label">Position</label>
-                                <select class="form-select">
-                                    <option>Select a position</option>
-                                    <option>Animal Care Volunteer</option>
-                                    <option>Event Coordinator</option>
-                                    <option>Pet Photographer</option>
-                                    <option>Dog Walker</option>
-                                    <option>Cat Socializer</option>
+                                <select class="form-select" id="applicationPosition" name="position" required>
+                                    <option value="">Select a position</option>
+                                    <!-- Options will be loaded dynamically -->
                                 </select>
                             </div>
                             <div class="col-md-6">
                                 <label class="form-label">Preferred Location</label>
-                                <select class="form-select">
-                                    <option>Select a location</option>
-                                    <option>Main Shelter</option>
-                                    <option>Downtown Center</option>
-                                    <option>West Side Location</option>
+                                <select class="form-select" name="location" required>
+                                    <option value="">Select a location</option>
+                                    <option value="Main Shelter">Main Shelter</option>
+                                    <option value="Downtown Center">Downtown Center</option>
+                                    <option value="West Side Location">West Side Location</option>
                                 </select>
                             </div>
                         </div>
@@ -249,19 +188,19 @@
                             <div class="row g-3">
                                 <div class="col-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="weekdays">
+                                        <input class="form-check-input" type="checkbox" id="weekdays" name="availability" value="weekdays">
                                         <label class="form-check-label" for="weekdays">Weekdays</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="weekends">
+                                        <input class="form-check-input" type="checkbox" id="weekends" name="availability" value="weekends">
                                         <label class="form-check-label" for="weekends">Weekends</label>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="evenings">
+                                        <input class="form-check-input" type="checkbox" id="evenings" name="availability" value="evenings">
                                         <label class="form-check-label" for="evenings">Evenings</label>
                                     </div>
                                 </div>
@@ -269,22 +208,39 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Experience</label>
-                            <textarea class="form-control" rows="3" placeholder="Describe your relevant experience"></textarea>
+                            <textarea class="form-control" rows="3" name="experience" placeholder="Describe your relevant experience"></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Why do you want to volunteer?</label>
-                            <textarea class="form-control" rows="3" placeholder="Tell us why you'd like to join our volunteer team"></textarea>
+                            <textarea class="form-control" rows="3" name="motivation" placeholder="Tell us why you'd like to join our volunteer team" required></textarea>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">References</label>
-                            <input type="text" class="form-control mb-2" placeholder="Reference 1 (Name and Contact)">
-                            <input type="text" class="form-control" placeholder="Reference 2 (Name and Contact)">
+                            <input type="text" class="form-control mb-2" name="reference1" placeholder="Reference 1 (Name and Contact)">
+                            <input type="text" class="form-control" name="reference2" placeholder="Reference 2 (Name and Contact)">
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Submit Application</button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn" form="newApplicationForm">Submit Application</button>
+                </div>
+            </div>
+        </div>    </div>
+
+    <!-- Application Details Modal -->
+    <div class="modal fade" id="applicationDetailsModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Application Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="applicationDetailsContent">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
@@ -321,8 +277,9 @@
                 <p class="mb-0">&copy; 2024 Pet Adoption System. All rights reserved.</p>
             </div>
         </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </footer>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/api-client.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/volunteer-applications.js"></script>
 </body>
-</html> 
+</html>

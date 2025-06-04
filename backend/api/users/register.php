@@ -1,7 +1,19 @@
 <?php
-require_once '../../config/db.php'; // Adjust path as needed
-require_once '../../utils/response.php'; // For sending JSON responses
-require_once '../../utils/validator.php'; // For input validation
+// Add CORS headers for cross-origin requests
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: application/json');
+
+// Handle preflight OPTIONS request
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit;
+}
+
+require_once __DIR__ . '/../../config/db.php';
+require_once __DIR__ . '/../../utils/response.php';
+require_once __DIR__ . '/../../utils/validator.php';
 
 // Allow only POST requests
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -17,8 +29,9 @@ $errors = Validator::validate($input, [
     'username' => 'required|string|min:3|max:50',
     'password' => 'required|string|min:8',
     'email' => 'required|email|max:100',
-    'full_name' => 'string|max:100',
-    'role' => 'required|in:adopter,staff,admin,vet,volunteer' // Ensure role is one of the ENUM values
+    'first_name' => 'string|max:50',
+    'last_name' => 'string|max:50',
+    'role' => 'required|in:admin,adopter,shelter_staff,volunteer,veterinarian,foster_parent'
 ]);
 
 if (!empty($errors)) {
@@ -29,17 +42,18 @@ if (!empty($errors)) {
 $username = $input['username'];
 $password = $input['password'];
 $email = $input['email'];
-$full_name = $input['full_name'] ?? null;
-$role = $input['role'] ?? 'adopter'; // Default role if not provided, though 'required' validation should catch it
+$first_name = $input['first_name'] ?? '';
+$last_name = $input['last_name'] ?? '';
+$role = $input['role'] ?? 'adopter';
 
 // Hash the password
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
 // Prepare SQL statement to prevent SQL injection
-$sql = "INSERT INTO users (username, password, email, full_name, role) VALUES (?, ?, ?, ?, ?)";
+$sql = "INSERT INTO users (username, password_hash, email, first_name, last_name, role) VALUES (?, ?, ?, ?, ?, ?)";
 
 if ($stmt = mysqli_prepare($link, $sql)) {
-    mysqli_stmt_bind_param($stmt, "sssss", $username, $hashed_password, $email, $full_name, $role);
+    mysqli_stmt_bind_param($stmt, "ssssss", $username, $hashed_password, $email, $first_name, $last_name, $role);
 
     if (mysqli_stmt_execute($stmt)) {
         $user_id = mysqli_insert_id($link);

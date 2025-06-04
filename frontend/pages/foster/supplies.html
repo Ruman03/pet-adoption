@@ -32,18 +32,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="dashboard.html">Dashboard</a>
                     </li>
-                </ul>
-                <div class="d-flex align-items-center">
+                </ul>                <div class="d-flex align-items-center">
                     <div class="dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" id="userDropdown">
                             <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Profile">
-                            Sarah Wilson
+                            <span id="userName">Loading...</span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="../user/profile.html"><i class="fas fa-user fa-fw me-2"></i>Profile</a></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-cog fa-fw me-2"></i>Settings</a></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
+                            <li><a class="dropdown-item" href="#" id="logoutBtn"><i class="fas fa-sign-out-alt fa-fw me-2"></i>Logout</a></li>
                         </ul>
                     </div>
                 </div>
@@ -55,17 +54,14 @@
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Supplies Management</h2>
-            <div class="d-flex gap-2">
-                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#inventoryModal">
+            <div class="d-flex gap-2">                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#updateModal">
                     <i class="fas fa-box me-2"></i>Update Inventory
                 </button>
                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#requestModal">
                     <i class="fas fa-plus me-2"></i>Request Supplies
                 </button>
             </div>
-        </div>
-
-        <!-- Supply Categories -->
+        </div>        <!-- Supply Categories -->
         <div class="row g-4 mb-4">
             <div class="col-md-3">
                 <div class="card bg-primary text-white">
@@ -73,7 +69,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">Total Items</h6>
-                                <h3 class="mb-0">45</h3>
+                                <h3 class="mb-0" id="totalItemsCount">0</h3>
                             </div>
                             <i class="fas fa-box-open fa-2x opacity-50"></i>
                         </div>
@@ -86,7 +82,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">In Stock</h6>
-                                <h3 class="mb-0">32</h3>
+                                <h3 class="mb-0" id="inStockCount">0</h3>
                             </div>
                             <i class="fas fa-check-circle fa-2x opacity-50"></i>
                         </div>
@@ -99,7 +95,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">Low Stock</h6>
-                                <h3 class="mb-0">8</h3>
+                                <h3 class="mb-0" id="lowStockCount">0</h3>
                             </div>
                             <i class="fas fa-exclamation-triangle fa-2x opacity-50"></i>
                         </div>
@@ -112,7 +108,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div>
                                 <h6 class="card-title mb-1">Out of Stock</h6>
-                                <h3 class="mb-0">5</h3>
+                                <h3 class="mb-0" id="outOfStockCount">0</h3>
                             </div>
                             <i class="fas fa-times-circle fa-2x opacity-50"></i>
                         </div>
@@ -121,12 +117,14 @@
             </div>
         </div>
 
-        <!-- Supply Categories Tabs -->
-        <div class="card">
+        <!-- Supply Categories Tabs -->        <div class="card">
             <div class="card-header bg-white">
-                <ul class="nav nav-tabs card-header-tabs">
+                <ul class="nav nav-tabs card-header-tabs" id="categoryTabs">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#food">Food & Treats</a>
+                        <a class="nav-link active" href="#all">All Items</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#food">Food & Treats</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#medical">Medical Supplies</a>
@@ -149,94 +147,10 @@
                                 <th>Quantity</th>
                                 <th>Status</th>
                                 <th>Last Updated</th>
-                                <th>Actions</th>
-                            </tr>
+                                <th>Actions</th>                            </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://via.placeholder.com/40" class="rounded me-2" alt="Item">
-                                        <div>
-                                            <h6 class="mb-0">Premium Kitten Food</h6>
-                                            <small class="text-muted">Royal Canin</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Food</td>
-                                <td>
-                                    <div class="progress" style="width: 100px;">
-                                        <div class="progress-bar bg-success" style="width: 75%"></div>
-                                    </div>
-                                    <small class="text-muted">15 units</small>
-                                </td>
-                                <td><span class="badge bg-success">In Stock</span></td>
-                                <td>Dec 12, 2023</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#updateModal">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#requestModal">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://via.placeholder.com/40" class="rounded me-2" alt="Item">
-                                        <div>
-                                            <h6 class="mb-0">Flea Treatment</h6>
-                                            <small class="text-muted">Frontline Plus</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Medical</td>
-                                <td>
-                                    <div class="progress" style="width: 100px;">
-                                        <div class="progress-bar bg-warning" style="width: 25%"></div>
-                                    </div>
-                                    <small class="text-muted">3 units</small>
-                                </td>
-                                <td><span class="badge bg-warning">Low Stock</span></td>
-                                <td>Dec 10, 2023</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#updateModal">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#requestModal">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <img src="https://via.placeholder.com/40" class="rounded me-2" alt="Item">
-                                        <div>
-                                            <h6 class="mb-0">Cat Litter</h6>
-                                            <small class="text-muted">Fresh Step</small>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>Hygiene</td>
-                                <td>
-                                    <div class="progress" style="width: 100px;">
-                                        <div class="progress-bar bg-danger" style="width: 0%"></div>
-                                    </div>
-                                    <small class="text-muted">0 units</small>
-                                </td>
-                                <td><span class="badge bg-danger">Out of Stock</span></td>
-                                <td>Dec 8, 2023</td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-primary me-1" data-bs-toggle="modal" data-bs-target="#updateModal">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#requestModal">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </td>
-                            </tr>
+                        <tbody id="suppliesTableBody">
+                            <!-- Dynamic content will be loaded here -->
                         </tbody>
                     </table>
                 </div>
@@ -247,21 +161,9 @@
         <div class="card mt-4">
             <div class="card-header bg-white">
                 <h5 class="card-title mb-0">Recent Activity</h5>
-            </div>
-            <div class="card-body">
-                <div class="timeline">
-                    <div class="timeline-item mb-3">
-                        <p class="small text-muted mb-1">December 12, 2023</p>
-                        <p class="mb-0"><strong>Supply Request Approved:</strong> 5 units of Premium Kitten Food</p>
-                    </div>
-                    <div class="timeline-item mb-3">
-                        <p class="small text-muted mb-1">December 10, 2023</p>
-                        <p class="mb-0"><strong>Low Stock Alert:</strong> Flea Treatment (3 units remaining)</p>
-                    </div>
-                    <div class="timeline-item mb-3">
-                        <p class="small text-muted mb-1">December 8, 2023</p>
-                        <p class="mb-0"><strong>Inventory Updated:</strong> Added 10 units of Dog Food</p>
-                    </div>
+            </div>            <div class="card-body">
+                <div class="timeline" id="recentActivityTimeline">
+                    <!-- Dynamic content will be loaded here -->
                 </div>
             </div>
         </div>
@@ -274,48 +176,44 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Request Supplies</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
+                </div>                <div class="modal-body">
+                    <form id="requestSupplyForm">
                         <div class="mb-3">
                             <label class="form-label">Item</label>
-                            <select class="form-select" required>
+                            <select class="form-select" name="item" required>
                                 <option value="">Select item...</option>
-                                <option value="kitten-food">Premium Kitten Food</option>
-                                <option value="flea-treatment">Flea Treatment</option>
-                                <option value="cat-litter">Cat Litter</option>
+                                <!-- Options will be populated dynamically -->
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Quantity Needed</label>
-                            <input type="number" class="form-control" min="1" required>
+                            <input type="number" class="form-control" name="quantity" min="1" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Priority</label>
-                            <select class="form-select" required>
+                            <select class="form-select" name="urgency" required>
                                 <option value="low">Low</option>
-                                <option value="medium">Medium</option>
+                                <option value="medium" selected>Medium</option>
                                 <option value="high">High</option>
                                 <option value="urgent">Urgent</option>
                             </select>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" name="notes" rows="3" placeholder="Additional details about your request..."></textarea>
                         </div>
                         <div class="mb-3">
                             <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="urgentDelivery">
+                                <input class="form-check-input" type="checkbox" name="urgentDelivery" id="urgentDelivery">
                                 <label class="form-check-label" for="urgentDelivery">
                                     Request urgent delivery
                                 </label>
                             </div>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
+                </div>                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Submit Request</button>
+                    <button type="button" class="btn btn-primary" id="submitRequestBtn">Submit Request</button>
                 </div>
             </div>
         </div>
@@ -328,16 +226,15 @@
                 <div class="modal-header">
                     <h5 class="modal-title">Update Inventory</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
+                </div>                <div class="modal-body">
+                    <form id="updateInventoryForm">
                         <div class="mb-3">
                             <label class="form-label">Current Quantity</label>
-                            <input type="number" class="form-control" value="15" readonly>
+                            <input type="number" class="form-control" name="currentQuantity" readonly>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Adjustment Type</label>
-                            <select class="form-select" required>
+                            <select class="form-select" name="adjustmentType" required>
                                 <option value="add">Add to Inventory</option>
                                 <option value="remove">Remove from Inventory</option>
                                 <option value="set">Set New Quantity</option>
@@ -345,11 +242,11 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Quantity</label>
-                            <input type="number" class="form-control" min="0" required>
+                            <input type="number" class="form-control" name="quantity" min="0" required>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Reason</label>
-                            <select class="form-select" required>
+                            <select class="form-select" name="reason" required>
                                 <option value="restock">Restock</option>
                                 <option value="used">Used</option>
                                 <option value="damaged">Damaged/Expired</option>
@@ -358,18 +255,18 @@
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Notes</label>
-                            <textarea class="form-control" rows="2"></textarea>
+                            <textarea class="form-control" name="notes" rows="2" placeholder="Additional details about the inventory change..."></textarea>
                         </div>
                     </form>
-                </div>
-                <div class="modal-footer">
+                </div>                <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary">Update Inventory</button>
+                    <button type="button" class="btn btn-primary" id="updateInventoryBtn">Update Inventory</button>
                 </div>
             </div>
         </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </div>    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/api-client.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script src="../../js/foster-supplies.js"></script>
 </body>
-</html> 
+</html>

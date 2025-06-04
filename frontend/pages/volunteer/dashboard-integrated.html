@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Dashboard - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="../../css/style.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">
+                <i class="fas fa-paw"></i> Pet Adoption
+            </a>
+            <div class="d-flex align-items-center">
+                <span class="text-white me-3">Welcome, <span id="userName">Loading...</span></span>
+                <a href="#" class="btn btn-outline-light btn-sm" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt me-1"></i>Logout
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container py-4">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-3">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0">Dashboard</h5>
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action active" data-section="tasks">
+                            <i class="fas fa-tasks me-2"></i>My Tasks
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" data-section="available">
+                            <i class="fas fa-clipboard-list me-2"></i>Available Tasks
+                        </a>
+                        <a href="#" class="list-group-item list-group-item-action" data-section="stats">
+                            <i class="fas fa-chart-bar me-2"></i>Statistics
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-9">
+                <!-- Statistics Section -->
+                <div id="stats-section" style="display: none;">
+                    <h3>My Statistics</h3>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <div class="card bg-primary text-white">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-tasks fa-2x mb-2"></i>
+                                    <h4 id="totalTasksCount">0</h4>
+                                    <p>Total Tasks</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-success text-white">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-check-circle fa-2x mb-2"></i>
+                                    <h4 id="completedTasksCount">0</h4>
+                                    <p>Completed</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="card bg-warning text-white">
+                                <div class="card-body text-center">
+                                    <i class="fas fa-clock fa-2x mb-2"></i>
+                                    <h4 id="pendingTasksCount">0</h4>
+                                    <p>Pending</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- My Tasks Section -->
+                <div id="tasks-section">
+                    <h3>My Tasks</h3>
+                    <div id="myTasksList" class="row g-3">
+                        <div class="col-12 text-center py-4">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2">Loading tasks...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Available Tasks Section -->
+                <div id="available-section" style="display: none;">
+                    <h3>Available Tasks</h3>
+                    <div id="availableTasksList" class="row g-3">
+                        <div class="col-12 text-center py-4">
+                            <div class="spinner-border" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <p class="mt-2">Loading available tasks...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Container -->
+    <div id="alertContainer" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/api-client.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script>
+        class VolunteerDashboard {
+            constructor() {
+                this.apiClient = new ApiClient();
+                this.authManager = new AuthManager();
+                this.myTasks = [];
+                this.availableTasks = [];
+                this.currentUser = null;
+                this.init();
+            }
+
+            async init() {
+                try {
+                    // Check authentication
+                    if (!this.authManager.isAuthenticated()) {
+                        window.location.href = '../auth/test-login.html';
+                        return;
+                    }
+
+                    this.currentUser = this.authManager.getCurrentUser();
+                    this.setupUI();
+                    await this.loadData();
+                } catch (error) {
+                    console.error('Dashboard initialization error:', error);
+                    this.showAlert('Failed to load dashboard', 'danger');
+                }
+            }
+
+            setupUI() {
+                // Update user name
+                document.getElementById('userName').textContent = this.currentUser.username || 'User';
+
+                // Setup logout
+                document.getElementById('logoutBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.authManager.logout();
+                    window.location.href = '../auth/test-login.html';
+                });
+
+                // Setup navigation
+                document.querySelectorAll('[data-section]').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        this.showSection(e.target.closest('[data-section]').dataset.section);
+                    });
+                });
+            }
+
+            showSection(section) {
+                // Update active nav
+                document.querySelectorAll('[data-section]').forEach(link => {
+                    link.classList.remove('active');
+                });
+                document.querySelector(`[data-section="${section}"]`).classList.add('active');
+
+                // Show/hide sections
+                document.querySelectorAll('[id$="-section"]').forEach(sec => {
+                    sec.style.display = 'none';
+                });
+                document.getElementById(`${section}-section`).style.display = 'block';
+
+                // Load data if needed
+                if (section === 'available' && this.availableTasks.length === 0) {
+                    this.loadAvailableTasks();
+                }
+            }
+
+            async loadData() {
+                await this.loadMyTasks();
+                this.updateStats();
+            }
+
+            async loadMyTasks() {
+                try {
+                    const response = await this.apiClient.get('/volunteer_tasks/list_mine.php');
+                    this.myTasks = response || [];
+                    this.renderMyTasks();
+                } catch (error) {
+                    console.error('Error loading my tasks:', error);
+                    this.showAlert('Failed to load my tasks', 'danger');
+                }
+            }
+
+            async loadAvailableTasks() {
+                try {
+                    const response = await this.apiClient.get('/volunteer_tasks/list.php');
+                    this.availableTasks = response || [];
+                    this.renderAvailableTasks();
+                } catch (error) {
+                    console.error('Error loading available tasks:', error);
+                    this.showAlert('Failed to load available tasks', 'danger');
+                }
+            }
+
+            renderMyTasks() {
+                const container = document.getElementById('myTasksList');
+                if (this.myTasks.length === 0) {
+                    container.innerHTML = '<div class="col-12 text-center py-4"><p class="text-muted">No tasks assigned yet.</p></div>';
+                    return;
+                }
+
+                container.innerHTML = this.myTasks.map(task => `
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">${task.title}</h6>
+                                <p class="card-text small">${task.description}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-${this.getPriorityColor(task.priority)}">${task.priority}</span>
+                                    <span class="badge bg-${this.getStatusColor(task.status)}">${task.status}</span>
+                                </div>
+                                <div class="mt-2 small text-muted">
+                                    <i class="fas fa-map-marker-alt me-1"></i>${task.location}
+                                    <br><i class="fas fa-clock me-1"></i>${task.task_date}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            renderAvailableTasks() {
+                const container = document.getElementById('availableTasksList');
+                if (this.availableTasks.length === 0) {
+                    container.innerHTML = '<div class="col-12 text-center py-4"><p class="text-muted">No available tasks.</p></div>';
+                    return;
+                }
+
+                container.innerHTML = this.availableTasks.map(task => `
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <h6 class="card-title">${task.title}</h6>
+                                <p class="card-text small">${task.description}</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <span class="badge bg-${this.getPriorityColor(task.priority)}">${task.priority}</span>
+                                    <button class="btn btn-primary btn-sm" onclick="dashboard.assignTask('${task.id}')">
+                                        <i class="fas fa-plus me-1"></i>Assign to Me
+                                    </button>
+                                </div>
+                                <div class="mt-2 small text-muted">
+                                    <i class="fas fa-map-marker-alt me-1"></i>${task.location}
+                                    <br><i class="fas fa-clock me-1"></i>${task.task_date}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            async assignTask(taskId) {
+                try {
+                    const response = await this.apiClient.request(`/volunteer_tasks/assign.php?id=${taskId}`, {
+                        method: 'POST',
+                        body: JSON.stringify({}),
+                        headers: {'Content-Type': 'application/json'}
+                    });
+
+                    if (response.success) {
+                        this.showAlert('Task assigned successfully!', 'success');
+                        await this.loadMyTasks();
+                        await this.loadAvailableTasks();
+                        this.updateStats();
+                    } else {
+                        throw new Error('Assignment failed');
+                    }
+                } catch (error) {
+                    console.error('Error assigning task:', error);
+                    this.showAlert('Failed to assign task', 'danger');
+                }
+            }
+
+            updateStats() {
+                const total = this.myTasks.length;
+                const completed = this.myTasks.filter(t => t.status === 'completed').length;
+                const pending = total - completed;
+
+                document.getElementById('totalTasksCount').textContent = total;
+                document.getElementById('completedTasksCount').textContent = completed;
+                document.getElementById('pendingTasksCount').textContent = pending;
+            }
+
+            getPriorityColor(priority) {
+                switch (priority?.toLowerCase()) {
+                    case 'high': return 'danger';
+                    case 'medium': return 'warning';
+                    case 'low': return 'info';
+                    default: return 'secondary';
+                }
+            }
+
+            getStatusColor(status) {
+                switch (status?.toLowerCase()) {
+                    case 'completed': return 'success';
+                    case 'in_progress': return 'primary';
+                    case 'assigned': return 'info';
+                    default: return 'secondary';
+                }
+            }
+
+            showAlert(message, type) {
+                const alertContainer = document.getElementById('alertContainer');
+                const alertId = 'alert-' + Date.now();
+                
+                const alertHtml = `
+                    <div id="${alertId}" class="alert alert-${type} alert-dismissible fade show" role="alert">
+                        ${message}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                `;
+                
+                alertContainer.insertAdjacentHTML('beforeend', alertHtml);
+                
+                // Auto-dismiss after 5 seconds
+                setTimeout(() => {
+                    const alert = document.getElementById(alertId);
+                    if (alert) {
+                        const bsAlert = new bootstrap.Alert(alert);
+                        bsAlert.close();
+                    }
+                }, 5000);
+            }
+        }
+
+        // Initialize dashboard
+        const dashboard = new VolunteerDashboard();
+    </script>
+</body>
+</html>

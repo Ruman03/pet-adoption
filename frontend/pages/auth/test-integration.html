@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volunteer Tasks Test - Pet Adoption System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header"><h5>Test API Endpoints</h5></div>
+                    <div class="card-body">
+                        <button class="btn btn-primary mb-2" onclick="testLogin()">Test Login</button>
+                        <button class="btn btn-secondary mb-2" onclick="testAvailableTasks()">Test Available Tasks</button>
+                        <button class="btn btn-secondary mb-2" onclick="testMyTasks()">Test My Tasks</button>
+                        <button class="btn btn-warning mb-2" onclick="testAssignTask()">Test Assign Task</button>
+                        <button class="btn btn-success mb-2" onclick="goToTasksPage()">Go to Tasks Page</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header"><h5>Test Results</h5></div>
+                    <div class="card-body">
+                        <pre id="results" style="max-height: 400px; overflow-y: auto;"></pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/api-client.js"></script>
+    <script src="../../js/auth.js"></script>
+    <script>
+        // Initialize API client and auth manager
+        window.apiClient = new ApiClient();
+        window.authManager = new AuthManager();
+        
+        function log(message) {
+            const results = document.getElementById('results');
+            results.textContent += new Date().toLocaleTimeString() + ': ' + message + '\n';
+            results.scrollTop = results.scrollHeight;
+        }
+        
+        async function testLogin() {
+            try {
+                log('Testing login...');
+                const response = await authManager.login('volunteer@example.com', 'volunteer123');
+                log('Login response: ' + JSON.stringify(response, null, 2));
+            } catch (error) {
+                log('Login error: ' + error.message);
+            }
+        }
+        
+        async function testAvailableTasks() {
+            try {
+                log('Testing available tasks...');
+                const response = await apiClient.get('/volunteer_tasks/list.php');
+                log('Available tasks: ' + JSON.stringify(response, null, 2));
+            } catch (error) {
+                log('Available tasks error: ' + error.message);
+            }
+        }
+        
+        async function testMyTasks() {
+            try {
+                log('Testing my tasks...');
+                const response = await apiClient.get('/volunteer_tasks/list_mine.php');
+                log('My tasks: ' + JSON.stringify(response, null, 2));
+            } catch (error) {
+                log('My tasks error: ' + error.message);
+            }
+        }
+        
+        async function testAssignTask() {
+            try {
+                log('Testing task assignment...');
+                const response = await apiClient.request('/volunteer_tasks/assign.php?id=1', {
+                    method: 'POST',
+                    body: JSON.stringify({}),
+                    headers: {'Content-Type': 'application/json'}
+                });
+                log('Assign task response: ' + JSON.stringify(response, null, 2));
+            } catch (error) {
+                log('Assign task error: ' + error.message);
+            }
+        }
+        
+        function goToTasksPage() {
+            // First ensure we're logged in
+            if (!authManager.isAuthenticated()) {
+                log('Please login first!');
+                return;
+            }
+            window.open('../volunteer/tasks.html', '_blank');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<?php
+require_once '../../config/db.php';
+require_once '../../utils/response.php';
+require_once '../../utils/validator.php';
+
+header("Access-Control-Allow-Origin: *");
+header("Content-Type: application/json; charset=UTF-8");
+header("Access-Control-Allow-Methods: DELETE");
+header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
+
+if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
+    sendResponse(405, 'Method not allowed');
+}
+
+// Verify authentication
+$headers = apache_request_headers();
+if (!isset($headers['Authorization'])) {
+    sendResponse(401, 'Authorization header missing');
+}
+
+// Extract user info from token
+$auth_header = $headers['Authorization'];
+if (!preg_match('/Bearer\s(\S+)/', $auth_header, $matches)) {
+    sendResponse(401, 'Invalid authorization format');
+}
+
+$token = $matches[1];
+$user_data = json_decode(base64_decode($token), true);
+if (!$user_data || !isset($user_data['user_id'])) {
+    sendResponse(401, 'Invalid token');
+}
+
+$user_id = $user_data['user_id'];
+
+// Get notification ID from URL or query parameter
+$notification_id = $_GET['id'] ?? null;
+
+if (!$notification_id) {
+    sendResponse(400, 'Notification ID is required');
+}
+
+// Validate notification ID
+$validator = new Validator();
+$validator->numeric($notification_id, 'notification_id');
+
+if ($validator->hasErrors()) {
+    sendResponse(400, 'Invalid notification ID');
+}
+
+$notification_id = (int)$notification_id;
+
+try {
+    $database = new Database();
+    $db = $database->getConnection();
+    
+    // Check if notification exists and belongs to user
+    $check_query = "SELECT id, title FROM notifications WHERE id = ? AND user_id = ?";
+    $check_stmt = $db->prepare($check_query);
+    $check_stmt->bindParam(1, $notification_id);
+    $check_stmt->bindParam(2, $user_id);
+    $check_stmt->execute();
+    
+    $notification = $check_stmt->fetch(PDO::FETCH_ASSOC);
+    if (!$notification) {
+        sendResponse(404, 'Notification not found or you do not have permission to delete it');
+    }
+    
+    // Delete notification
+    $delete_query = "DELETE FROM notifications WHERE id = ? AND user_id = ?";
+    $delete_stmt = $db->prepare($delete_query);
+    $delete_stmt->bindParam(1, $notification_id);
+    $delete_stmt->bindParam(2, $user_id);
+    
+    if (!$delete_stmt->execute()) {
+        sendResponse(500, 'Failed to delete notification');
+    }
+    
+    sendResponse(200, 'Notification deleted successfully', [
+        'notification_id' => $notification_id,
+        'title' => $notification['title'],
+        'user_id' => $user_id
+    ]);
+    
+} catch (PDOException $e) {
+    sendResponse(500, 'Database error: ' . $e->getMessage());
+} catch (Exception $e) {
+    sendResponse(500, 'Server error: ' . $e->getMessage());
+}
+?>
