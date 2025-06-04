@@ -1,0 +1,11 @@
+{
+    "name": "pet-adoption/backend",
+    "description": "PHP backend for pet-adoption website",
+    "authors": [
+        {
+            "name": "Ahmad",
+            "email": "rumanasif3@gmail.com"
+        }
+    ],
+    "require": {}
+}

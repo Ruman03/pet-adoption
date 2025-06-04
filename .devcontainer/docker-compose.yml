@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  # PHP Application Service
+  app:
+    build:
+      context: . # Use the Dockerfile in the .devcontainer folder
+      dockerfile: Dockerfile
+    container_name: php_app_demo
+    volumes:
+      - ..:/workspace:cached # Mounts your entire repository into /workspace in the container
+    ports:
+      - "8000:8000" # Maps port 8000 on the host (Codespace) to 8000 in the container
+    depends_on:
+      - db          # Ensures 'db' service starts before 'app' service
+    environment:
+      DB_CONNECTION: mysql
+      DB_HOST: db         # This is the service name of our MySQL container
+      DB_PORT: 3306
+      DB_DATABASE: my_demo_db
+      DB_USERNAME: demo_user
+      DB_PASSWORD: demo_password
+
+  # MySQL Database Service
+  db:
+    image: mysql:8.0
+    container_name: mysql_db_demo
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ahmad # Change this!
+      MYSQL_DATABASE: my_demo_db
+      MYSQL_USER: demo_user
+      MYSQL_PASSWORD: ahmad # Change this!
+    volumes:
+      - mysql_data_demo:/var/lib/mysql # Persists database data
+    ports:
+      - "3306:3306" # Optional: map MySQL port to host for external tools
+
+  # phpMyAdmin Service
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin_demo
+    restart: always
+    ports:
+      - "8081:80" # Access phpMyAdmin on host port 8081
+    environment:
+      PMA_HOST: db # Connects to our 'db' service
+      PMA_PORT: 3306
+      # MYSQL_ROOT_PASSWORD: root_password_secure # Only if PMA_HOST doesn't work alone
+    depends_on:
+      - db
+
+volumes:
+  mysql_data_demo: # Defines the named volume for MySQL data persistence
